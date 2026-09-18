@@ -1,0 +1,31 @@
+Since the only added file is `.gitignore` itself, and the other changes are just modifications to existing files without any build artifacts, dependencies, or temporary files that would typically warrant gitignore entries, there's no need for additional ignore rules beyond what might already be appropriate for the project.
+
+However, since a `.gitignore` file was added, it suggests the project may want to establish some standard ignore patterns. But given that only an HTML file (`index.html`) was modified and no clear build artifacts or dependencies were introduced, I'll provide a minimal set of common web development ignores:
+
+```
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+```
