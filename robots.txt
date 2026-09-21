@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: 上线后把 USERNAME.github.io 换成真实站点地址
+Sitemap: https://buxicim2026.github.io/buxicim/sitemap.xml

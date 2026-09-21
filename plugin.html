@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stream Live Translate · OBS 实时 AI 字幕插件 | 不息传播</title>
+    <meta
+      name="description"
+      content="不息传播自研的 OBS 实时 AI 字幕 / 同声传译插件：从媒体源内部取音频，流式翻译，实时压中文字幕。免安装、跨平台、支持本地部署。"
+    />
+    <meta name="keywords" content="OBS 插件,实时字幕,AI 同传,直播字幕,Stream Live Translate,不息传播,FunASR" />
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Stream Live Translate · OBS 实时 AI 字幕插件" />
+    <meta property="og:description" content="从 OBS 媒体源内部取音频，大模型流式翻译，实时压中文字幕。" />
+    <meta name="theme-color" content="#0A0E17" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+
+  <body>
+    <div data-include="header"></div>
+
+    <main id="main">
+      <!-- ============ 产品 Hero ============ -->
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow reveal">自研开源工具</span>
+          <h1 class="reveal" data-delay="1">Stream Live Translate</h1>
+          <p class="reveal" data-delay="2">
+            给直播画面加上实时中文字幕的 OBS 插件。从媒体源内部取音频，交给大模型流式翻译，
+            再把字幕叠加回画面 —— 外语发布会直播时尤其好用。
+          </p>
+
+          <div class="tag-row reveal" data-delay="3" style="justify-content: center; margin-top: 1.5rem">
+            <span class="tag tag-accent">Windows 10/11 x64</span>
+            <span class="tag tag-accent">macOS 13+ (Apple Silicon)</span>
+            <span class="tag tag-accent">Linux x64</span>
+            <span class="tag">MIT 许可</span>
+          </div>
+
+          <div class="btn-row reveal" data-delay="4" style="justify-content: center; margin-top: 2rem">
+            <!-- TODO: 替换为真实 Releases 下载地址 -->
+            <a
+              class="btn btn-primary btn-lg"
+              href="https://github.com/buxicim2026/stream-live-translate/releases"
+              target="_blank"
+              rel="noopener"
+              >下载插件</a
+            >
+            <a class="btn btn-ghost btn-lg" href="#steps">四步上手</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 能力清单 ============ -->
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">能力清单</span>
+            <h2>它到底能做些什么</h2>
+          </div>
+
+          <div class="grid grid-3">
+            <article class="card reveal" data-delay="1">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5C7" stroke-width="1.8">
+                  <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+                  <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
+                </svg>
+              </span>
+              <h3>复制即用</h3>
+              <p>插件文件夹复制进 OBS 插件目录，无需安装器；OBS 启动自动拉起引擎，退出自动回收。</p>
+            </article>
+
+            <article class="card reveal" data-delay="2">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3A86FF" stroke-width="1.8">
+                  <path d="M4 12h2l2-5 3 10 2-7 2 4h5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <h3>OBS 内部取音频</h3>
+              <p>音频滤镜直接捕获媒体源的声音，不受系统其它声音干扰，比系统环回干净得多。</p>
+            </article>
+
+            <article class="card reveal" data-delay="3">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6C5CE7" stroke-width="1.8">
+                  <rect x="3" y="4" width="18" height="12" rx="2" />
+                  <path d="M9 20h6M12 16v4" />
+                </svg>
+              </span>
+              <h3>跨平台</h3>
+              <p>Windows、macOS（Apple Silicon）、Linux 三平台都有发布包，免安装拷贝即用。</p>
+            </article>
+
+            <article class="card reveal" data-delay="1">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5C7" stroke-width="1.8">
+                  <rect x="3" y="4" width="18" height="16" rx="2" />
+                  <path d="M15 4v16" />
+                </svg>
+              </span>
+              <h3>侧边栏控制台</h3>
+              <p>用 OBS 自带「自定义浏览器停靠部件」打开管理面板，填 Key、调样式不用切出 OBS。</p>
+            </article>
+
+            <article class="card reveal" data-delay="2">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3A86FF" stroke-width="1.8">
+                  <path d="M13 3L5 14h5l-1 7 8-11h-5l1-7z" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <h3>流式翻译</h3>
+              <p>WebSocket 流式接口，低延迟；中文直通不翻译，其它语种自动同传为中文。</p>
+            </article>
+
+            <article class="card reveal" data-delay="3">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6C5CE7" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M6.5 6.5a7.8 7.8 0 000 11M17.5 17.5a7.8 7.8 0 000-11" />
+                </svg>
+              </span>
+              <h3>VAD + 音乐检测</h3>
+              <p>检测到静音或音乐就跳过该片段，省 token 也不污染字幕。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 效果预览 ============ -->
+      <section class="section" id="preview">
+        <div class="container">
+          <div class="grid grid-2" style="align-items: center">
+            <div class="reveal">
+              <span class="eyebrow">效果预览</span>
+              <h2>字幕直接压在直播画面上</h2>
+              <p>
+                插件在本地起一个服务，OBS 里添加一个浏览器源就能拿到字幕画面。
+                字体、颜色、动画都能在控制台里调，改完即时生效。
+              </p>
+              <div
+                class="mono"
+                style="
+                  margin-top: 1.25rem;
+                  padding: 1rem;
+                  border-radius: 12px;
+                  background: rgba(6, 10, 18, 0.7);
+                  border: 1px solid var(--glass-border);
+                  color: var(--c-primary);
+                  font-size: 0.85rem;
+                  line-height: 2;
+                "
+              >
+                字幕画面：http://127.0.0.1:8787/overlay<br />
+                控制台：http://127.0.0.1:8787/admin
+              </div>
+              <p style="margin-top: 1rem; font-size: 0.875rem">
+                浏览器源建议尺寸 1920×240，放在画面下方即可。
+              </p>
+            </div>
+
+            <div class="reveal" data-delay="2">
+              <div class="live-mock">
+                <div class="mock-topbar">
+                  <span class="mock-dot live"></span>
+                  <span class="mock-dot"></span>
+                  <span class="mock-dot"></span>
+                  <span class="mock-title">Browser Source · /overlay</span>
+                  <span class="mock-badge">LIVE</span>
+                </div>
+                <div class="mock-screen">
+                  <span class="mock-stage">Live</span>
+                  <div class="mock-captions">
+                    <p class="mock-line is-foreign">This is the fastest chip we've ever built.</p>
+                    <p class="mock-line">这是我们打造过最快的芯片</p>
+                    <p class="mock-line">而且它的能效比翻了一倍</p>
+                  </div>
+                </div>
+                <div class="mock-foot">
+                  <span class="mock-eq" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </span>
+                  <span>浏览器源 · 1920×240 · 样式可调</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 四步上手 ============ -->
+      <section class="section" id="steps">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">四步上手</span>
+            <h2>装好到出字幕，四步</h2>
+          </div>
+
+          <ol class="steps">
+            <li class="step card reveal" data-delay="1">
+              <h3>安装插件</h3>
+              <p>把插件文件夹复制进 OBS 插件目录，启动或重启 OBS。</p>
+            </li>
+            <li class="step card reveal" data-delay="2">
+              <h3>挂音频滤镜</h3>
+              <p>右键要出字幕的源 → 滤镜 → 添加「实时字幕捕获」，告诉插件听哪个源。</p>
+            </li>
+            <li class="step card reveal" data-delay="3">
+              <h3>填 API Key</h3>
+              <p>OBS 视图 → 停靠部件 → 自定义浏览器停靠部件，打开控制台填入 Key 保存（只存本地）。</p>
+            </li>
+            <li class="step card reveal" data-delay="4">
+              <h3>加字幕源</h3>
+              <p>场景里添加浏览器源，URL 填字幕叠加地址，建议 1920×240，开播即可出字幕。</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ 模型兼容 ============ -->
+      <section class="section" id="models">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">模型兼容性</span>
+            <h2>哪些模型能用，哪些不能</h2>
+            <p class="section-lead">
+              插件需要能「实时接收流式音频、边听边返回字幕」的 Realtime 模型。判断标准就这么一条。
+            </p>
+          </div>
+
+          <div class="model-grid">
+            <div class="model-col reveal" data-delay="1">
+              <h3><span class="tag tag-accent">可用</span> 云端 / 本地都能跑</h3>
+              <ul class="model-list">
+                <li class="model-item">
+                  <strong>通义 Qwen Realtime 语音</strong>
+                  <span>同传 / ASR / Qwen-Audio，云端开箱即用</span>
+                </li>
+                <li class="model-item">
+                  <strong>智谱 GLM-Realtime</strong>
+                  <span>OpenAI Realtime 兼容</span>
+                </li>
+                <li class="model-item">
+                  <strong>OpenAI Realtime</strong>
+                  <span>官方实时接口</span>
+                </li>
+                <li class="model-item">
+                  <strong>FunASR 流式识别</strong>
+                  <span>本地自部署，中文 / 粤语强，默认端口 10095</span>
+                </li>
+                <li class="model-item">
+                  <strong>speech-to-speech 网关</strong>
+                  <span>本地部署，可换 Whisper / Parakeet / SenseVoice 后端</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="model-col no reveal" data-delay="2">
+              <h3><span class="tag tag-warn">不可用</span> 接上了也不会有字幕</h3>
+              <ul class="model-list">
+                <li class="model-item">
+                  <strong>纯文本 / 纯视觉模型</strong>
+                  <span>无法接收实时音频</span>
+                </li>
+                <li class="model-item">
+                  <strong>纯语音合成（TTS）</strong>
+                  <span>只出不进，不产生字幕</span>
+                </li>
+                <li class="model-item">
+                  <strong>HTTP 上传式 ASR</strong>
+                  <span>非实时，接上也不会有字幕</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="notice reveal" style="margin-top: 1.75rem">
+            <span>💡</span>
+            <div>
+              <strong>想完全本地跑：</strong>
+              起一个能流式出字的 ASR（FunASR / faster-whisper / SenseVoice），再套一个 OpenAI-Realtime
+              兼容网关，插件选「本机部署 API」连上即可。换模型只改网关里的 STT 后端，插件侧不用动。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 系统要求 ============ -->
+      <section class="section" id="requirements">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">系统要求</span>
+            <h2>平台与依赖</h2>
+          </div>
+
+          <div class="table-wrap reveal" data-delay="1">
+            <table class="req">
+              <thead>
+                <tr>
+                  <th scope="col">平台</th>
+                  <th scope="col">最低版本</th>
+                  <th scope="col">系统依赖</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Windows</td>
+                  <td>Windows 10 1809+</td>
+                  <td>无额外依赖</td>
+                </tr>
+                <tr>
+                  <td>macOS</td>
+                  <td>macOS 13 (Ventura)</td>
+                  <td>仅 Apple Silicon（M1–M4）</td>
+                </tr>
+                <tr>
+                  <td>Linux x64</td>
+                  <td>Ubuntu 20.04 LTS / Debian 11（glibc 2.31+）</td>
+                  <td>libasound2 (alsa)，推荐 ffmpeg</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="section" id="faq">
+        <div class="container container-narrow">
+          <div class="section-head center reveal">
+            <span class="eyebrow">常见问题</span>
+            <h2>你可能想问</h2>
+          </div>
+
+          <div class="accordion reveal" data-delay="1" id="faqList">
+            <div class="accordion-item">
+              <button class="accordion-q" type="button" aria-expanded="false">
+                必须要用 OBS 吗？
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-a">
+                <div>
+                  <p>
+                    插件模式面向 OBS，把插件文件夹复制进插件目录即可。引擎也支持脱离 OBS 单独运行
+                    （系统音频环回模式），具体见项目文档。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-q" type="button" aria-expanded="false">
+                中文内容会不会被翻译？
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-a">
+                <div>
+                  <p>不会。检测到中文会直接输出原文，只有其它语种才走同传翻译。</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-q" type="button" aria-expanded="false">
+                延迟大概多少？
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-a">
+                <div>
+                  <p>
+                    用 ASR 模型（云端 qwen3-asr-flash-realtime 或本地 FunASR）有流式 partial，延迟可到约 1 秒；
+                    同传翻译模型按整句返回，可开启低延迟模式按段推进。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-q" type="button" aria-expanded="false">
+                API Key 安全吗？
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-a">
+                <div>
+                  <p>
+                    配置只保存在本地 config.toml，不联网回传。便携模式下 config.toml 与可执行文件同目录，
+                    迁移时整个文件夹拷走即可。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-q" type="button" aria-expanded="false">
+                可以完全本地跑吗？
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-a">
+                <div>
+                  <p>
+                    可以。用 FunASR 流式识别或套一个 OpenAI-Realtime 兼容网关（如 speech-to-speech），
+                    插件选「本机部署 API」连上即可，音频不出本机。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-q" type="button" aria-expanded="false">
+                放音乐或没人说话时会出字幕吗？
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-a">
+                <div>
+                  <p>不会。VAD 与音乐检测会跳过静音和音乐片段。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA ============ -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-band reveal">
+            <h2>要不要给自己的直播加一层字幕？</h2>
+            <p>插件开源免费，照着四步走就能跑起来。遇到问题或在直播里用出了新玩法，欢迎来聊。</p>
+            <div class="btn-row">
+              <!-- TODO: 替换为真实 Releases 下载地址 -->
+              <a
+                class="btn btn-primary btn-lg"
+                href="https://github.com/buxicim2026/stream-live-translate/releases"
+                target="_blank"
+                rel="noopener"
+                >下载插件</a
+              >
+              <a class="btn btn-ghost btn-lg" href="contact.html">联系我们</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+
+    <script type="module" src="assets/js/layout.js"></script>
+    <script src="assets/js/motion.js"></script>
+    <script>
+      // FAQ 折叠：只在本页使用，逻辑轻量，直接内联
+      document.getElementById('faqList').addEventListener('click', (e) => {
+        const btn = e.target.closest('.accordion-q');
+        if (!btn) return;
+        const item = btn.parentElement;
+        const open = item.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+[
+  {
+    "title": "首页 · 不息传播",
+    "url": "index.html",
+    "desc": "追梦不停，创造无限。专注科技生活内容的自媒体，偶尔直播有趣的发布会，并自研 OBS 实时 AI 字幕插件。",
+    "keywords": "不息传播 首页 科技生活 自媒体 发布会 直播 字幕 简介"
+  },
+  {
+    "title": "关于我们",
+    "url": "about.html",
+    "desc": "不息传播是谁：品牌故事、内容理念、发展历程与账号数据。",
+    "keywords": "关于 品牌故事 理念 历程 时间线 团队 粉丝"
+  },
+  {
+    "title": "内容与直播",
+    "url": "content.html",
+    "desc": "科技生活、发布会直播、工具与插件等栏目，以及 B站 视频与下一场直播预告。",
+    "keywords": "内容 栏目 视频 直播 发布会 B站 BV号 预告"
+  },
+  {
+    "title": "字幕插件 · Stream Live Translate",
+    "url": "plugin.html",
+    "desc": "OBS 实时 AI 字幕 / 同声传译插件：内部取音频、流式翻译、VAD 音乐检测、跨平台，四步上手。",
+    "keywords": "插件 OBS 字幕 实时 同传 翻译 下载 安装 教程 开源 Stream Live Translate"
+  },
+  {
+    "title": "插件：能力清单",
+    "url": "plugin.html#features",
+    "desc": "免安装、OBS 内部取音频、跨平台、侧边栏控制台、流式翻译、VAD 与音乐检测。",
+    "keywords": "功能 特性 音频滤镜 控制台 流式 VAD 音乐检测"
+  },
+  {
+    "title": "插件：四步上手",
+    "url": "plugin.html#steps",
+    "desc": "复制插件目录 → 挂音频滤镜 → 侧边栏填 API Key → 添加浏览器源，即可出字幕。",
+    "keywords": "安装 上手 教程 步骤 API Key 浏览器源 overlay admin"
+  },
+  {
+    "title": "插件：模型兼容性",
+    "url": "plugin.html#models",
+    "desc": "可用的实时语音模型与不可用的模型对照，含 FunASR、speech-to-speech 本地自部署方案。",
+    "keywords": "模型 兼容 Qwen GLM OpenAI Realtime FunASR 本地部署 网关 ASR"
+  },
+  {
+    "title": "插件：系统要求",
+    "url": "plugin.html#requirements",
+    "desc": "Windows 10/11、macOS 13+ Apple Silicon、Linux x64 的版本与依赖要求。",
+    "keywords": "系统要求 Windows macOS Linux 依赖 alsa ffmpeg"
+  },
+  {
+    "title": "插件：常见问题",
+    "url": "plugin.html#faq",
+    "desc": "是否必须用 OBS、中文会不会被翻译、延迟多少、API Key 安全吗、能否完全本地跑。",
+    "keywords": "FAQ 常见问题 延迟 隐私 本地 中文 音乐"
+  },
+  {
+    "title": "联系与合作",
+    "url": "contact.html",
+    "desc": "B站、AcFun、微信公众号入口，商务合作、投稿与技术合作方式，留言表单。",
+    "keywords": "联系 合作 商务 投稿 邮箱 微信 AcFun B站 留言"
+  }
+]

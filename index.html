@@ -1,276 +1,351 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iOS 26 液态玻璃效果</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>不息传播 · 追梦不停，创造无限</title>
+    <meta
+      name="description"
+      content="不息传播 —— 专注科技生活内容的自媒体，偶尔直播有趣的发布会。自研 OBS 实时 AI 字幕插件，让外语直播实时出中文字幕。"
+    />
+    <meta name="keywords" content="不息传播,科技生活,发布会直播,OBS 插件,实时字幕,AI 同传,自媒体" />
+    <meta name="author" content="不息传播" />
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            overflow: hidden;
-            position: relative;
-        }
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="不息传播 · 追梦不停，创造无限" />
+    <meta
+      property="og:description"
+      content="专注科技生活内容的自媒体，偶尔直播有趣的发布会。自研 OBS 实时 AI 字幕插件。"
+    />
+    <meta property="og:image" content="https://i0.hdslb.com/bfs/face/091a0d0dfdd5bd044cb084d85906851cbb13a60b.jpg" />
+    <meta name="theme-color" content="#0A0E17" />
 
-        /* 动态背景气泡 */
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.6;
-            animation: float 8s ease-in-out infinite;
-        }
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
 
-        .bubble:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            background: #ff6b6b;
-            top: 10%;
-            left: 20%;
-            animation-delay: 0s;
-        }
+  <body>
+    <div data-include="header"></div>
 
-        .bubble:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            background: #4ecdc4;
-            bottom: 20%;
-            right: 15%;
-            animation-delay: -2s;
-        }
+    <main id="main">
+      <!-- ============ Hero ============ -->
+      <section class="hero">
+        <span class="hero-blob b1" aria-hidden="true"></span>
+        <span class="hero-blob b2" aria-hidden="true"></span>
 
-        .bubble:nth-child(3) {
-            width: 250px;
-            height: 250px;
-            background: #ffeaa7;
-            top: 50%;
-            left: 60%;
-            animation-delay: -4s;
-        }
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow reveal">科技生活 · 自媒体</span>
+            <h1 class="hero-title reveal" data-delay="1">
+              不息传播<br /><span class="gradient-text">让技术回到生活里</span>
+            </h1>
+            <p class="hero-slogan gradient-text reveal" data-delay="2">追梦不停，创造无限</p>
+            <p class="hero-lead reveal" data-delay="3">
+              我们是专注于科技生活内容的自媒体，偶尔会直播有趣的发布会。
+              遇到不顺手的工具就自己写一个 —— OBS 实时 AI 字幕插件，就是这么来的。
+            </p>
+            <div class="btn-row reveal" data-delay="4">
+              <a class="btn btn-primary btn-lg" href="plugin.html">看看我们的插件</a>
+              <a
+                class="btn btn-ghost btn-lg"
+                href="https://space.bilibili.com/385015308"
+                target="_blank"
+                rel="noopener"
+                >去 B 站关注</a
+              >
+            </div>
+            <div class="hero-meta reveal" data-delay="5">
+              <span class="tag tag-accent">B站 UID 385015308</span>
+              <span class="tag">AcFun 同步更新</span>
+              <span class="tag">微信公众号</span>
+            </div>
+          </div>
 
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(20px, -30px) scale(1.05);
-            }
-            50% {
-                transform: translate(-15px, 20px) scale(0.95);
-            }
-            75% {
-                transform: translate(25px, 15px) scale(1.02);
-            }
-        }
+          <!-- 直播字幕演示 -->
+          <div class="hero-visual reveal" data-delay="2">
+            <div class="live-mock">
+              <div class="mock-topbar">
+                <span class="mock-dot live"></span>
+                <span class="mock-dot"></span>
+                <span class="mock-dot"></span>
+                <span class="mock-title">OBS · 直播间</span>
+                <span class="mock-badge">LIVE</span>
+              </div>
 
-        /* 液态玻璃卡片 */
-        .glass-card {
-            position: relative;
-            width: 400px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.1),
-                inset 0 1px 1px rgba(255, 255, 255, 0.3),
-                inset 0 -1px 1px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            overflow: hidden;
-        }
+              <div class="mock-screen">
+                <span class="mock-stage">Keynote</span>
+                <div class="mock-captions">
+                  <p class="mock-line is-foreign">And one more thing…</p>
+                  <p class="mock-line">还有一件事……</p>
+                  <p class="mock-line">这是我们迄今最快的一代产品</p>
+                </div>
+              </div>
 
-        /* 液态光泽效果 */
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(
-                circle at center,
-                rgba(255, 255, 255, 0.3) 0%,
-                transparent 70%
-            );
-            animation: liquid-shine 6s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        @keyframes liquid-shine {
-            0%, 100% {
-                transform: rotate(0deg) scale(1);
-            }
-            50% {
-                transform: rotate(180deg) scale(1.1);
-            }
-        }
-
-        /* 内容区域 */
-        .content {
-            position: relative;
-            z-index: 1;
-            color: white;
-            text-align: center;
-        }
-
-        .content h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            letter-spacing: -0.5px;
-        }
-
-        .content p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-
-        /* 液态按钮 */
-        .liquid-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 4px 15px rgba(0, 0, 0, 0.1),
-                inset 0 1px 1px rgba(255, 255, 255, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .liquid-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.4),
-                transparent
-            );
-            transition: left 0.5s ease;
-        }
-
-        .liquid-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 6px 20px rgba(0, 0, 0, 0.15),
-                inset 0 1px 1px rgba(255, 255, 255, 0.5);
-        }
-
-        .liquid-btn:hover::before {
-            left: 100%;
-        }
-
-        .liquid-btn:active {
-            transform: translateY(0);
-        }
-
-        /* 装饰性液滴 */
-        .droplet {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            animation: droplet-float 5s ease-in-out infinite;
-        }
-
-        .droplet:nth-child(4) {
-            width: 60px;
-            height: 60px;
-            top: -20px;
-            right: -15px;
-            animation-delay: 0s;
-        }
-
-        .droplet:nth-child(5) {
-            width: 40px;
-            height: 40px;
-            bottom: 30px;
-            left: -10px;
-            animation-delay: -1.5s;
-        }
-
-        @keyframes droplet-float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-10px) rotate(180deg);
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- 背景气泡 -->
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-
-    <!-- 液态玻璃卡片 -->
-    <div class="glass-card">
-        <!-- 装饰液滴 -->
-        <div class="droplet"></div>
-        <div class="droplet"></div>
-
-        <div class="content">
-            <h1>iOS 26</h1>
-            <p>体验全新的液态玻璃设计语言<br>流畅 · 透明 · 未来感</p>
-            <a href="#" class="liquid-btn">开始探索</a>
+              <div class="mock-foot">
+                <span class="mock-eq" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </span>
+                <span>OBS 内部取音频 · 流式翻译 · 实时中文字幕</span>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </section>
 
-    <script>
-        // 添加鼠标交互效果
-        document.addEventListener('mousemove', (e) => {
-            const card = document.querySelector('.glass-card');
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
+      <!-- ============ 内容方向 ============ -->
+      <section class="section" id="topics">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">我们做什么</span>
+            <h2>四个方向，一件事：把技术讲成人话</h2>
+            <p class="section-lead">
+              从产品体验到发布会直播，再到自己动手做工具，内容始终围绕「这东西对真实生活到底有没有用」。
+            </p>
+          </div>
 
-        document.addEventListener('mouseleave', () => {
-            const card = document.querySelector('.glass-card');
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-        });
-    </script>
-</body>
+          <div class="grid grid-4">
+            <article class="card reveal" data-delay="1">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5C7" stroke-width="1.8">
+                  <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+                </svg>
+              </span>
+              <h3>科技生活</h3>
+              <p>把新技术放回真实场景里讲清楚：好用什么、坑在哪、值不值得买。</p>
+            </article>
+
+            <article class="card reveal" data-delay="2">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3A86FF" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M7.5 7.5a6.4 6.4 0 000 9M16.5 16.5a6.4 6.4 0 000-9M4.6 4.6a10.5 10.5 0 000 14.8M19.4 19.4a10.5 10.5 0 000-14.8" />
+                </svg>
+              </span>
+              <h3>发布会直播</h3>
+              <p>有意思的发布会我们都会播，边看边聊，和弹幕一起等那个「One more thing」。</p>
+            </article>
+
+            <article class="card reveal" data-delay="3">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6C5CE7" stroke-width="1.8">
+                  <path d="M8 6l-5 6 5 6M16 6l5 6-5 6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <h3>效率工具</h3>
+              <p>自己用得顺手才推荐，不顺手就自己写一个 —— 字幕插件就是这么来的。</p>
+            </article>
+
+            <article class="card reveal" data-delay="4">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5C7" stroke-width="1.8">
+                  <circle cx="6" cy="12" r="2.6" />
+                  <circle cx="18" cy="6" r="2.6" />
+                  <circle cx="18" cy="18" r="2.6" />
+                  <path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6" />
+                </svg>
+              </span>
+              <h3>内容分发</h3>
+              <p>B站 主阵地，AcFun 与微信公众号同步更新，哪里方便你就在哪里看。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 数据条 ============ -->
+      <section class="section" id="stats">
+        <div class="container">
+          <div class="grid grid-3">
+            <div class="card stat-card reveal" data-delay="1">
+              <span class="stat-value" data-count="1189">0</span>
+              <span class="stat-label">B 站粉丝</span>
+              <span class="stat-source">数据来自 B站 公开信息</span>
+            </div>
+            <div class="card stat-card reveal" data-delay="2">
+              <span class="stat-value" data-count="3">0</span>
+              <span class="stat-label">内容平台</span>
+              <span class="stat-source">B站 / AcFun / 微信公众号</span>
+            </div>
+            <div class="card stat-card reveal" data-delay="3">
+              <span class="stat-value" data-count="1">0</span>
+              <span class="stat-label">自研开源工具</span>
+              <span class="stat-source">OBS 实时 AI 字幕插件</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 发布会直播特色 ============ -->
+      <section class="section" id="live">
+        <div class="container">
+          <div class="card reveal" style="padding: clamp(1.5rem, 3vw, 2.5rem)">
+            <div class="grid grid-2" style="align-items: center">
+              <div>
+                <span class="eyebrow">直播特色</span>
+                <h2>偶尔，我们会直播一场有趣的发布会</h2>
+                <p>
+                  海外发布会常常是全英文的，一边听一边还要给观众解释，顾得上听就顾不上说。
+                  所以我们把「实时字幕」这件事做到了 OBS 里：外语进来，中文字幕直接压在画面上。
+                </p>
+                <ul class="tag-row" style="list-style: none; padding: 0; margin-top: 1.25rem">
+                  <li class="tag tag-accent">边看边聊</li>
+                  <li class="tag">实时中文字幕</li>
+                  <li class="tag">弹幕一起讨论</li>
+                  <li class="tag">开播前在动态预告</li>
+                </ul>
+              </div>
+
+              <div class="live-mock">
+                <div class="mock-topbar">
+                  <span class="mock-dot live"></span>
+                  <span class="mock-dot"></span>
+                  <span class="mock-dot"></span>
+                  <span class="mock-title">发布会直播 · 中文字幕</span>
+                  <span class="mock-badge">LIVE</span>
+                </div>
+                <div class="mock-screen">
+                  <span class="mock-stage">Live</span>
+                  <div class="mock-captions">
+                    <p class="mock-line is-foreign">It's been an incredible year for all of us.</p>
+                    <p class="mock-line">对我们所有人来说，这是不可思议的一年</p>
+                    <p class="mock-line">感谢每一位在屏幕前的你</p>
+                  </div>
+                </div>
+                <div class="mock-foot">
+                  <span class="mock-eq" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </span>
+                  <span>静音与音乐片段自动跳过，字幕不乱码</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 自研插件 ============ -->
+      <section class="section" id="plugin">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">自研工具</span>
+            <h2>于是我们做了 <span class="gradient-text">Stream Live Translate</span></h2>
+            <p class="section-lead">
+              一个 OBS 插件：从媒体源内部取音频，交给大模型流式翻译，再把中文字幕叠加回直播画面。
+            </p>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="card reveal" data-delay="1">
+              <h3>它解决的是这个问题</h3>
+              <p>外语发布会直播时，观众需要中文字幕，但没人能一边听一边实时打出来。</p>
+              <ul style="margin-top: 1rem">
+                <li>音频直接从 OBS 源内部取，不受系统其它声音干扰</li>
+                <li>中文直通不翻译，其它语种自动同传为中文</li>
+                <li>静音与音乐自动跳过，省 token 也不污染字幕</li>
+                <li>可以完全本地部署，音频不出本机</li>
+              </ul>
+              <div class="btn-row" style="margin-top: 1.5rem">
+                <a class="btn btn-primary" href="plugin.html">了解插件</a>
+                <a class="btn btn-ghost" href="plugin.html#steps">四步上手</a>
+              </div>
+            </div>
+
+            <div class="card reveal" data-delay="2">
+              <h3>字幕是怎么叠加上去的</h3>
+              <p>插件在本地起一个服务，OBS 里添加一个浏览器源即可：</p>
+              <div
+                class="mono"
+                style="
+                  margin-top: 1rem;
+                  padding: 1rem;
+                  border-radius: 12px;
+                  background: rgba(6, 10, 18, 0.7);
+                  border: 1px solid var(--glass-border);
+                  color: var(--c-primary);
+                  font-size: 0.85rem;
+                  line-height: 2;
+                "
+              >
+                字幕画面：http://127.0.0.1:8787/overlay<br />
+                控制台：http://127.0.0.1:8787/admin
+              </div>
+              <p style="margin-top: 1rem; font-size: 0.875rem">
+                控制台可以直接钉在 OBS 侧边栏，填 Key、调字体颜色都在 OBS 里完成，不用来回切窗口。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 平台矩阵 ============ -->
+      <section class="section" id="platforms">
+        <div class="container">
+          <div class="section-head center reveal">
+            <span class="eyebrow">关注我们</span>
+            <h2>在哪个平台看你方便？</h2>
+            <p class="section-lead">B站 是主阵地，AcFun 与微信公众号同步更新，开播前也会提前通知。</p>
+          </div>
+
+          <div class="grid grid-3">
+            <a class="card platform-card reveal" data-delay="1" data-platform="bilibili" href="https://space.bilibili.com/385015308">
+              <div class="platform-head">
+                <span class="platform-logo">B站</span>
+                <div>
+                  <div class="platform-name">哔哩哔哩</div>
+                  <div class="platform-handle">UID 385015308</div>
+                </div>
+              </div>
+              <p>主阵地。科技生活内容、发布会直播与插件演示视频都在这里更新。</p>
+              <span class="btn btn-primary btn-sm">去 B 站关注</span>
+            </a>
+
+            <a class="card platform-card reveal" data-delay="2" data-platform="acfun" href="contact.html">
+              <div class="platform-head">
+                <span class="platform-logo">AC</span>
+                <div>
+                  <div class="platform-name">AcFun</div>
+                  <div class="platform-handle">ac</div>
+                </div>
+              </div>
+              <p>同步分发部分内容，欢迎在 ac 关注我们。</p>
+              <span class="btn btn-ghost btn-sm">前往 AcFun</span>
+            </a>
+
+            <a class="card platform-card reveal" data-delay="3" data-platform="wechat" href="contact.html">
+              <div class="platform-head">
+                <span class="platform-logo">微信</span>
+                <div>
+                  <div class="platform-name">微信公众号</div>
+                  <div class="platform-handle">wx</div>
+                </div>
+              </div>
+              <p>图文与开播提醒，公众号搜索「不息传播」关注。</p>
+              <span class="btn btn-ghost btn-sm">微信关注</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA ============ -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-band reveal">
+            <h2>下一场发布会，一起看？</h2>
+            <p>开播信息会提前发在 B站 动态和微信公众号。想聊合作或者工具上的想法，也随时找我们。</p>
+            <div class="btn-row">
+              <a class="btn btn-primary btn-lg" href="https://space.bilibili.com/385015308" target="_blank" rel="noopener">去 B 站关注</a>
+              <a class="btn btn-ghost btn-lg" href="contact.html">联系与合作</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+
+    <script type="module" src="assets/js/layout.js"></script>
+    <script src="assets/js/motion.js"></script>
+  </body>
 </html>

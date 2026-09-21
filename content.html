@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>内容与直播 | 不息传播</title>
+    <meta
+      name="description"
+      content="不息传播的内容与直播：科技生活、发布会直播、工具与插件等栏目，以及 B站 视频与下一场直播预告。"
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+    <meta property="og:title" content="内容与直播 | 不息传播" />
+    <meta property="og:description" content="科技生活、发布会直播、工具与插件 —— 内容都在这里。" />
+    <meta name="theme-color" content="#0A0E17" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+
+  <body>
+    <div data-include="header"></div>
+
+    <main id="main">
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow reveal">内容与直播</span>
+          <h1 class="reveal" data-delay="1">我们做了些什么</h1>
+          <p class="reveal" data-delay="2">
+            科技生活、发布会直播、工具与插件 —— 内容更新在 B站，AcFun 与微信公众号同步分发。
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ 栏目 ============ -->
+      <section class="section" id="channels">
+        <div class="container">
+          <div class="grid grid-3">
+            <article class="card reveal" data-delay="1">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5C7" stroke-width="1.8">
+                  <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+                </svg>
+              </span>
+              <h3>科技生活</h3>
+              <p>产品体验、使用技巧与生活化的科技选题。</p>
+              <span class="tag tag-accent">视频</span>
+            </article>
+
+            <article class="card reveal" data-delay="2">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3A86FF" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M7.5 7.5a6.4 6.4 0 000 9M16.5 16.5a6.4 6.4 0 000-9" />
+                </svg>
+              </span>
+              <h3>发布会直播</h3>
+              <p>有意思的发布会直播，实时解说与讨论。</p>
+              <span class="tag tag-accent">直播</span>
+            </article>
+
+            <article class="card reveal" data-delay="3">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6C5CE7" stroke-width="1.8">
+                  <path d="M8 6l-5 6 5 6M16 6l5 6-5 6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <h3>工具与插件</h3>
+              <p>自研工具的功能演示、上手教程与更新记录。</p>
+              <span class="tag tag-accent">教程</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 直播预告 ============ -->
+      <section class="section" id="live">
+        <div class="container">
+          <div class="live-banner reveal">
+            <div class="live-banner-l">
+              <span class="live-pulse" aria-hidden="true"></span>
+              <div>
+                <strong style="display: block; font-size: 1.05rem">下一场发布会直播</strong>
+                <span class="text-sm text-muted">开播信息会提前发在 B站 动态与微信公众号。</span>
+              </div>
+            </div>
+            <a class="btn btn-primary" href="https://space.bilibili.com/385015308" target="_blank" rel="noopener">
+              关注等开播提醒
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 视频 ============ -->
+      <section class="section" id="videos">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">视频</span>
+            <h2>最近更新</h2>
+            <p class="section-lead">完整视频列表在 B站 空间，这里展示精选内容。</p>
+          </div>
+
+          <!-- TODO: 有视频后，按下面注释的格式往 assets/data/site.js 的 videos 数组里加 BV 号，
+               再把下面这段注释替换成卡片（可复制 .video-frame 结构）。 -->
+          <div class="video-grid">
+            <article class="card reveal" data-delay="1">
+              <div
+                class="video-frame"
+                style="
+                  display: grid;
+                  place-items: center;
+                  background:
+                    radial-gradient(420px 220px at 30% 25%, rgba(0, 229, 199, 0.18), transparent 70%),
+                    linear-gradient(135deg, #0d1320, #141d2e);
+                "
+              >
+                <div style="text-align: center; padding: 1.5rem">
+                  <div style="font-size: 1.6rem; margin-bottom: 0.5rem">🎬</div>
+                  <strong style="display: block; color: var(--text-1)">视频位待补充</strong>
+                  <span class="text-sm text-muted">在 site.js 的 videos 里填入 BV 号即可</span>
+                </div>
+              </div>
+              <p class="video-desc">
+                当前还没有接入具体视频，可以先去 <a href="https://space.bilibili.com/385015308" target="_blank" rel="noopener">B站 空间</a> 看全部内容。
+              </p>
+            </article>
+
+            <!-- 视频卡片结构示例（填入 BV 号后启用）：
+            <article class="card">
+              <div class="video-frame">
+                <iframe
+                  src="//player.bilibili.com/player.html?bvid=BV1xx411c7mD&high_quality=1&danmaku=0"
+                  scrolling="no"
+                  frameborder="0"
+                  allowfullscreen
+                  title="视频标题"
+                ></iframe>
+              </div>
+              <h3 style="margin-top: 1rem; font-size: 1.05rem">视频标题</h3>
+              <p class="video-desc">一句话简介</p>
+            </article>
+            -->
+          </div>
+
+          <div class="notice reveal" style="margin-top: 1.75rem">
+            <span>ℹ️</span>
+            <div>
+              接入视频的方式：把 B站 视频链接里的 <span class="mono">BV号</span> 填进
+              <span class="mono">assets/data/site.js</span> 的 <span class="mono">videos</span> 数组，
+              然后按上面注释里的卡片结构复制一份即可，不需要改 CSS。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA ============ -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-band reveal">
+            <h2>在 B站 看全部内容</h2>
+            <p>视频、直播回放与动态都放在 B站 空间，AcFun 与微信公众号同步更新。</p>
+            <div class="btn-row">
+              <a class="btn btn-primary btn-lg" href="https://space.bilibili.com/385015308" target="_blank" rel="noopener">去 B 站空间</a>
+              <a class="btn btn-ghost btn-lg" href="contact.html">联系与合作</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+
+    <script type="module" src="assets/js/layout.js"></script>
+    <script src="assets/js/motion.js"></script>
+  </body>
+</html>

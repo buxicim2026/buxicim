@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>站内搜索 | 不息传播</title>
+    <meta name="description" content="在不息传播官网内搜索内容：插件、栏目、常见问题与联系方式。" />
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+    <meta name="theme-color" content="#0A0E17" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+
+  <body>
+    <div data-include="header"></div>
+
+    <main id="main">
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow reveal">站内搜索</span>
+          <h1 class="reveal" data-delay="1">找点什么</h1>
+          <p class="reveal" data-delay="2">搜「字幕」「插件」「发布会」「联系」这些关键词都能找到。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container container-narrow">
+          <div class="search-box reveal">
+            <label class="sr-only" for="searchInput">搜索关键词</label>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="输入关键词，例如：实时字幕 / OBS / 发布会"
+              autocomplete="off"
+            />
+            <button class="btn btn-primary" type="button" id="searchBtn">搜索</button>
+          </div>
+
+          <p class="search-meta reveal" id="searchMeta">正在加载索引…</p>
+          <div class="result-list reveal" id="searchResults"></div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+
+    <script type="module" src="assets/js/layout.js"></script>
+    <script src="assets/js/motion.js"></script>
+    <script type="module" src="assets/js/search.js"></script>
+    <script type="module">
+      // 回车与按钮触发（search.js 负责输入即搜）
+      const input = document.getElementById('searchInput');
+      const btn = document.getElementById('searchBtn');
+      const run = () => input.dispatchEvent(new Event('input'));
+      btn.addEventListener('click', run);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          run();
+        }
+      });
+    </script>
+  </body>
+</html>

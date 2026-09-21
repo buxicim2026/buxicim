@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>联系与合作 | 不息传播</title>
+    <meta
+      name="description"
+      content="联系不息传播：B站、AcFun、微信公众号入口，商务合作、投稿选题与技术合作方式。"
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+    <meta property="og:title" content="联系与合作 | 不息传播" />
+    <meta property="og:description" content="商务合作、投稿选题、技术合作，欢迎来找我们。" />
+    <meta name="theme-color" content="#0A0E17" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+
+  <body>
+    <div data-include="header"></div>
+
+    <main id="main">
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow reveal">联系与合作</span>
+          <h1 class="reveal" data-delay="1">有事随时找我们</h1>
+          <p class="reveal" data-delay="2">
+            合作、选题、工具上的想法都欢迎聊。最快的方式是 B站 私信，其次是邮件。
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ 平台入口 ============ -->
+      <section class="section" id="platforms">
+        <div class="container">
+          <div class="section-head center reveal">
+            <span class="eyebrow">关注入口</span>
+            <h2>在哪个平台找我们</h2>
+          </div>
+
+          <div class="grid grid-3">
+            <a class="card platform-card reveal" data-delay="1" data-platform="bilibili" href="https://space.bilibili.com/385015308">
+              <div class="platform-head">
+                <span class="platform-logo">B站</span>
+                <div>
+                  <div class="platform-name">哔哩哔哩</div>
+                  <div class="platform-handle">UID 385015308</div>
+                </div>
+              </div>
+              <p>主阵地，私信回复最快。视频、直播与动态都在这里。</p>
+              <span class="btn btn-primary btn-sm">去 B 站关注</span>
+            </a>
+
+            <a class="card platform-card reveal" data-delay="2" data-platform="acfun" href="contact.html">
+              <div class="platform-head">
+                <span class="platform-logo">AC</span>
+                <div>
+                  <div class="platform-name">AcFun</div>
+                  <div class="platform-handle">ac</div>
+                </div>
+              </div>
+              <p>同步分发部分内容，欢迎在 ac 关注我们。</p>
+              <span class="btn btn-ghost btn-sm">前往 AcFun</span>
+            </a>
+
+            <a class="card platform-card reveal" data-delay="3" data-platform="wechat" href="contact.html">
+              <div class="platform-head">
+                <span class="platform-logo">微信</span>
+                <div>
+                  <div class="platform-name">微信公众号</div>
+                  <div class="platform-handle">wx</div>
+                </div>
+              </div>
+              <p>图文与开播提醒，公众号搜索「不息传播」关注。</p>
+              <span class="btn btn-ghost btn-sm">微信关注</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 合作方式 ============ -->
+      <section class="section" id="cooperation">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">合作方式</span>
+            <h2>可以怎么合作</h2>
+          </div>
+
+          <div class="grid grid-3">
+            <article class="card reveal" data-delay="1">
+              <h3>商务合作</h3>
+              <p>产品体验、发布会相关的内容合作。请把品牌、产品与大致诉求一并说明。</p>
+            </article>
+            <article class="card reveal" data-delay="2">
+              <h3>投稿与选题</h3>
+              <p>有想让我们测的产品、想聊的选题，或者发现了什么坑，都可以告诉我们。</p>
+            </article>
+            <article class="card reveal" data-delay="3">
+              <h3>技术合作</h3>
+              <p>关于 OBS 实时字幕插件的部署、模型接入与二次开发，欢迎一起折腾。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 留言表单 ============ -->
+      <section class="section" id="message">
+        <div class="container container-narrow">
+          <div class="section-head center reveal">
+            <span class="eyebrow">留言</span>
+            <h2>给我们留个言</h2>
+            <p class="section-lead">
+              静态站点没有后端，提交后会用你本机的邮件客户端打开一封写好的邮件。
+            </p>
+          </div>
+
+          <form class="card reveal" data-delay="1" id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="cName">怎么称呼你</label>
+                <input id="cName" name="name" type="text" placeholder="你的名字或昵称" required />
+              </div>
+              <div class="field">
+                <label for="cContact">联系方式</label>
+                <input id="cContact" name="contact" type="text" placeholder="邮箱 / 微信 / B站 ID" required />
+              </div>
+              <div class="field field-full">
+                <label for="cType">来意</label>
+                <select id="cType" name="type">
+                  <option value="商务合作">商务合作</option>
+                  <option value="投稿与选题">投稿与选题</option>
+                  <option value="技术合作">技术合作</option>
+                  <option value="其它">其它</option>
+                </select>
+              </div>
+              <div class="field field-full">
+                <label for="cMsg">想说的话</label>
+                <textarea id="cMsg" name="message" placeholder="简单说说背景和诉求就好" required></textarea>
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-top: 1.5rem">
+              <button class="btn btn-primary btn-lg" type="submit">生成邮件</button>
+              <span class="text-sm text-muted" id="formHint" style="align-self: center"></span>
+            </div>
+
+            <!-- TODO: 若要接第三方表单服务（Formspree / 腾讯问卷等），
+                 把下面这段 JS 换成 form.action + fetch 提交即可，页面结构不用动。 -->
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+
+    <script type="module" src="assets/js/layout.js"></script>
+    <script src="assets/js/motion.js"></script>
+    <script type="module">
+      // 表单：无后端，用 mailto 兜底。邮箱从 assets/data/site.js 读取。
+      import { site } from './assets/data/site.js';
+
+      const form = document.getElementById('contactForm');
+      const hint = document.getElementById('formHint');
+
+      if (!site.email) {
+        hint.textContent = '邮箱尚未配置，请先在 site.js 填写 email，或直接到 B站 私信我们。';
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('cName').value.trim();
+        const contact = document.getElementById('cContact').value.trim();
+        const type = document.getElementById('cType').value;
+        const message = document.getElementById('cMsg').value.trim();
+
+        if (!name || !contact || !message) {
+          hint.textContent = '请填写称呼、联系方式和想说的话。';
+          return;
+        }
+
+        if (!site.email) {
+          hint.textContent = '邮箱尚未配置，请先到 B站 私信我们（UID 385015308）。';
+          return;
+        }
+
+        const subject = `[${type}] 来自 ${name} 的留言`;
+        const body = `称呼：${name}\n联系方式：${contact}\n来意：${type}\n\n${message}\n`;
+        window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    </script>
+  </body>
+</html>
