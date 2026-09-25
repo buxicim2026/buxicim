@@ -26,7 +26,8 @@ VS Code 用户也可以用 Live Server 插件。
 ├── index.html        首页：Hero、内容方向、数据、发布会直播、插件、平台矩阵
 ├── about.html        关于我们：故事、理念、发展历程、账号数据
 ├── content.html      内容与直播：栏目、视频、直播预告
-├── plugin.html       插件产品页：能力、演示、四步上手、模型兼容、系统要求、FAQ
+├── software.html     不息软件：三个自研 OBS 插件总览与下载
+├── plugin.html       Stream Live Translate 详情页：能力、演示、四步上手、模型兼容、FAQ
 ├── contact.html      联系与合作：平台入口、合作方式、留言表单
 ├── search.html       站内搜索
 ├── 404.html          404 页
@@ -51,22 +52,29 @@ VS Code 用户也可以用 Live Server 插件。
 | 首页数据条数字 | 对应 HTML 里的 `data-count="..."` |
 | 导航栏 / 页脚 | `partials/header.html`、`partials/footer.html` |
 | 配色与字号 | `assets/css/base.css` 顶部的 `:root` 变量 |
+| Logo / 台标 | 替换 `assets/img/logo.png`（导航、页脚、favicon、分享图都用它） |
 | 搜索结果 | `assets/data/search-index.json`（新增页面记得补一条） |
 
 新增一个页面：复制任一 HTML → 改标题与内容 → 在 `partials/header.html`、`partials/footer.html` 加链接 → 在 `search-index.json` 补一条 → 在 `sitemap.xml` 补一条。
 
+## 不息软件（自研插件）
+
+`software.html` 汇总三个自研 OBS 插件，下载按钮指向各自 GitHub Releases 的最新发行版：
+
+| 软件 | 说明 | 下载地址 |
+| --- | --- | --- |
+| Stream Live Translate | 实时画面翻译、实时显示字幕（详情页 `plugin.html`） | `buxicim2026/stream-live-translate/releases/latest` |
+| HDR Playlist Source | HDR 播放列表源，多条视频连播不降级 | `buxicim2026/HDR-Playlist-Source/releases/latest` |
+| tv-obsbroadcast-scheduler | 电视台式自动播出（预览版） | `buxicim2026/tv-obsbroadcast-scheduler/releases` |
+
+> 插件发新版后，记得同步 `software.html` 与 `plugin.html` 里显示的版本号。
+
 ## 待补充清单（TODO）
 
-上线前建议先把这些填掉，站内已用占位文案标好位置：
-
-1. `assets/data/site.js` → `site.url`：改成真实站点地址
-2. `assets/data/site.js` → `site.email`：商务合作邮箱（填了 contact 页表单才能用）
-3. `assets/data/site.js` → `platforms` 里 AcFun 与微信公众号的 `url`
-4. `assets/data/site.js` → `videos`：填入 B站 视频的 BV 号，再按 `content.html` 里的注释复制卡片
-5. `assets/data/site.js` → `plugin.downloadUrl` / `repoUrl`：插件 Releases 与仓库真实地址
-6. `plugin.html`：两处下载按钮的 `href`（目前指向占位仓库地址）
-7. `sitemap.xml` / `robots.txt`：把 `USERNAME.github.io` 换成 `buxicim2026.github.io/buxicim`
-8. `CNAME`：绑定自定义域名时填写，并在仓库 Settings → Pages 里同步设置
+1. `assets/data/site.js` → `site.email`：商务合作邮箱（填了 contact 页表单才能用）
+2. `assets/data/site.js` → `platforms` 里 AcFun 与微信公众号的 `url`
+3. `assets/data/site.js` → `videos`：填入 B站 视频的 BV 号，再按 `content.html` 里的注释复制卡片
+4. 绑定自定义域名时：在仓库 Settings → Pages 里填域名，并同步更新 `sitemap.xml`、`robots.txt`
 
 搜索 TODO：在项目里搜 `TODO` 可以一次找齐。
 

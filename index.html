@@ -10,7 +10,7 @@
     />
     <meta name="keywords" content="不息传播,科技生活,发布会直播,OBS 插件,实时字幕,AI 同传,自媒体" />
     <meta name="author" content="不息传播" />
-    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
       property="og:description"
       content="专注科技生活内容的自媒体，偶尔直播有趣的发布会。自研 OBS 实时 AI 字幕插件。"
     />
-    <meta property="og:image" content="https://i0.hdslb.com/bfs/face/091a0d0dfdd5bd044cb084d85906851cbb13a60b.jpg" />
+    <meta property="og:image" content="https://buxicim2026.github.io/buxicim/assets/img/logo.png" />
     <meta name="theme-color" content="#0A0E17" />
 
     <link rel="stylesheet" href="assets/css/base.css" />
@@ -48,7 +48,7 @@
               遇到不顺手的工具就自己写一个 —— OBS 实时 AI 字幕插件，就是这么来的。
             </p>
             <div class="btn-row reveal" data-delay="4">
-              <a class="btn btn-primary btn-lg" href="plugin.html">看看我们的插件</a>
+              <a class="btn btn-primary btn-lg" href="software.html">看看不息软件</a>
               <a
                 class="btn btn-ghost btn-lg"
                 href="https://space.bilibili.com/385015308"
@@ -169,9 +169,9 @@
               <span class="stat-source">B站 / AcFun / 微信公众号</span>
             </div>
             <div class="card stat-card reveal" data-delay="3">
-              <span class="stat-value" data-count="1">0</span>
-              <span class="stat-label">自研开源工具</span>
-              <span class="stat-source">OBS 实时 AI 字幕插件</span>
+              <span class="stat-value" data-count="3">0</span>
+              <span class="stat-label">自研 OBS 插件</span>
+              <span class="stat-source">不息软件</span>
             </div>
           </div>
         </div>
@@ -229,50 +229,53 @@
       <section class="section" id="plugin">
         <div class="container">
           <div class="section-head reveal">
-            <span class="eyebrow">自研工具</span>
-            <h2>于是我们做了 <span class="gradient-text">Stream Live Translate</span></h2>
+            <span class="eyebrow">不息软件</span>
+            <h2>于是有了 <span class="gradient-text">三个自研 OBS 插件</span></h2>
             <p class="section-lead">
-              一个 OBS 插件：从媒体源内部取音频，交给大模型流式翻译，再把中文字幕叠加回直播画面。
+              实时字幕、HDR 播放列表、电视台式自动播出 —— 都是直播时嫌工具不顺手，自己写的。
+              免费、三平台、本地运行。
             </p>
           </div>
 
           <div class="grid grid-2">
             <div class="card reveal" data-delay="1">
-              <h3>它解决的是这个问题</h3>
-              <p>外语发布会直播时，观众需要中文字幕，但没人能一边听一边实时打出来。</p>
+              <h3>三个插件，各管一件事</h3>
               <ul style="margin-top: 1rem">
-                <li>音频直接从 OBS 源内部取，不受系统其它声音干扰</li>
-                <li>中文直通不翻译，其它语种自动同传为中文</li>
-                <li>静音与音乐自动跳过，省 token 也不污染字幕</li>
-                <li>可以完全本地部署，音频不出本机</li>
+                <li>
+                  <strong style="color: var(--text-1)">Stream Live Translate</strong> ——
+                  外语直播实时出中文字幕
+                </li>
+                <li>
+                  <strong style="color: var(--text-1)">HDR Playlist Source</strong> ——
+                  多条视频连播，走原生 HDR 管线
+                </li>
+                <li>
+                  <strong style="color: var(--text-1)">tv-obsbroadcast-scheduler</strong> ——
+                  按节目单到点自动播出
+                </li>
               </ul>
               <div class="btn-row" style="margin-top: 1.5rem">
-                <a class="btn btn-primary" href="plugin.html">了解插件</a>
-                <a class="btn btn-ghost" href="plugin.html#steps">四步上手</a>
+                <a class="btn btn-primary" href="software.html">查看不息软件</a>
+                <a
+                  class="btn btn-ghost"
+                  href="https://github.com/buxicim2026"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub 主页</a
+                >
               </div>
             </div>
 
             <div class="card reveal" data-delay="2">
-              <h3>字幕是怎么叠加上去的</h3>
-              <p>插件在本地起一个服务，OBS 里添加一个浏览器源即可：</p>
-              <div
-                class="mono"
-                style="
-                  margin-top: 1rem;
-                  padding: 1rem;
-                  border-radius: 12px;
-                  background: rgba(6, 10, 18, 0.7);
-                  border: 1px solid var(--glass-border);
-                  color: var(--c-primary);
-                  font-size: 0.85rem;
-                  line-height: 2;
-                "
-              >
-                字幕画面：http://127.0.0.1:8787/overlay<br />
-                控制台：http://127.0.0.1:8787/admin
-              </div>
+              <h3>都在 GitHub 发布，下载解压就能用</h3>
+              <p>每个插件的最新发行版都会打包好 Windows / macOS / Linux 三个平台。</p>
+              <ul style="margin-top: 1rem">
+                <li>实时字幕插件：插件文件夹复制进 OBS 插件目录即可</li>
+                <li>HDR 播放列表源：把 bin 与 data 分别复制到 OBS 对应目录</li>
+                <li>自动播出插件：在 OBS 工具 → 脚本里加载 lua 文件</li>
+              </ul>
               <p style="margin-top: 1rem; font-size: 0.875rem">
-                控制台可以直接钉在 OBS 侧边栏，填 Key、调字体颜色都在 OBS 里完成，不用来回切窗口。
+                具体步骤在 <a href="software.html">不息软件</a> 页里写得比较细。
               </p>
             </div>
           </div>

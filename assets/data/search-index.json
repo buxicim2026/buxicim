@@ -2,7 +2,7 @@
   {
     "title": "首页 · 不息传播",
     "url": "index.html",
-    "desc": "追梦不停，创造无限。专注科技生活内容的自媒体，偶尔直播有趣的发布会，并自研 OBS 实时 AI 字幕插件。",
+    "desc": "追梦不停，创造无限。专注科技生活内容的自媒体，偶尔直播有趣的发布会，并自研三个 OBS 插件。",
     "keywords": "不息传播 首页 科技生活 自媒体 发布会 直播 字幕 简介"
   },
   {
@@ -18,10 +18,34 @@
     "keywords": "内容 栏目 视频 直播 发布会 B站 BV号 预告"
   },
   {
-    "title": "字幕插件 · Stream Live Translate",
+    "title": "不息软件 · 自研 OBS 插件",
+    "url": "software.html",
+    "desc": "三个自研 OBS 插件总览：实时字幕、HDR 播放列表源、电视台式自动播出，附最新发行版下载。",
+    "keywords": "不息软件 插件 软件 下载 开源 OBS 自研 发布版"
+  },
+  {
+    "title": "Stream Live Translate · 实时字幕插件",
+    "url": "software.html#slt",
+    "desc": "OBS 实时画面翻译、实时显示字幕：内部取音频、流式翻译、VAD 音乐检测，最新版 v0.0.34。",
+    "keywords": "Stream Live Translate 实时字幕 同传 翻译 下载 字幕 不息软件"
+  },
+  {
+    "title": "HDR Playlist Source · HDR 播放列表源",
+    "url": "software.html#hdr",
+    "desc": "OBS 的 HDR 播放列表源：多条视频排队连播，P010 / Rec.2100 PQ·HLG 直通不降级，最新版 v0.0.3。",
+    "keywords": "HDR Playlist Source 播放列表 连播 HDR 10bit P010 网络流 HLS 下载"
+  },
+  {
+    "title": "tv-obsbroadcast-scheduler · 电视台式自动播出",
+    "url": "software.html#tvbs",
+    "desc": "按节目单到点硬切、播完自动接下一条，含报时器与 NTP 授时，最新版 v0.0.1（预览版）。",
+    "keywords": "tv-obsbroadcast-scheduler 自动播出 节目单 排期 报时器 授时 电视台 Lua 下载"
+  },
+  {
+    "title": "插件详情：Stream Live Translate",
     "url": "plugin.html",
-    "desc": "OBS 实时 AI 字幕 / 同声传译插件：内部取音频、流式翻译、VAD 音乐检测、跨平台，四步上手。",
-    "keywords": "插件 OBS 字幕 实时 同传 翻译 下载 安装 教程 开源 Stream Live Translate"
+    "desc": "Stream Live Translate 完整说明：能力清单、四步上手教程、模型兼容性、系统要求与常见问题。",
+    "keywords": "插件 详情 OBS 字幕 安装 教程 模型 兼容 FAQ"
   },
   {
     "title": "插件：能力清单",

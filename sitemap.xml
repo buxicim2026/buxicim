@@ -17,9 +17,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://buxicim2026.github.io/buxicim/plugin.html</loc>
+    <loc>https://buxicim2026.github.io/buxicim/software.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://buxicim2026.github.io/buxicim/plugin.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://buxicim2026.github.io/buxicim/contact.html</loc>

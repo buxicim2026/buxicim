@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>不息软件 · 自研 OBS 插件 | 不息传播</title>
+    <meta
+      name="description"
+      content="不息传播自研的 OBS 插件：Stream Live Translate（实时 AI 字幕同传）、HDR Playlist Source（HDR 播放列表源）、tv-obsbroadcast-scheduler（电视台式自动播出）。附最新发行版下载。"
+    />
+    <meta
+      name="keywords"
+      content="不息软件,OBS 插件,实时字幕,HDR 播放列表,自动播出,Stream Live Translate,HDR Playlist Source,tv-obsbroadcast-scheduler"
+    />
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="不息软件 · 自研 OBS 插件" />
+    <meta
+      property="og:description"
+      content="实时字幕、HDR 播放列表、电视台式自动播出 —— 三个自研 OBS 插件，附最新发行版下载。"
+    />
+    <meta property="og:image" content="https://buxicim2026.github.io/buxicim/assets/img/logo.png" />
+    <meta name="theme-color" content="#0A0E17" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+
+  <body>
+    <div data-include="header"></div>
+
+    <main id="main">
+      <!-- ============ 栏目 Hero ============ -->
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow reveal">不息软件</span>
+          <h1 class="reveal" data-delay="1">我们自己用的 OBS 插件</h1>
+          <p class="reveal" data-delay="2">
+            都是直播时嫌现成工具不够顺手，于是自己写的东西。免费、三平台、本地运行，
+            下载解压就能用，目前共三个。
+          </p>
+          <div class="tag-row reveal" data-delay="3" style="justify-content: center; margin-top: 1.5rem">
+            <span class="tag tag-accent">实时字幕</span>
+            <span class="tag tag-accent">HDR 播放列表</span>
+            <span class="tag tag-accent">自动播出</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 软件总览卡片 ============ -->
+      <section class="section">
+        <div class="container">
+          <div class="grid grid-3">
+            <a class="card reveal" data-delay="1" href="#slt" style="text-decoration: none">
+              <span class="tag tag-accent">最新版 v0.0.34</span>
+              <h3 style="margin-top: 0.75rem">Stream Live Translate</h3>
+              <p>OBS 实时画面翻译，实时显示字幕。外语直播边听边出中文字幕。</p>
+              <p class="text-sm mono" style="margin-top: 0.75rem">Windows / macOS / Linux</p>
+            </a>
+            <a class="card reveal" data-delay="2" href="#hdr" style="text-decoration: none">
+              <span class="tag tag-accent">最新版 v0.0.3</span>
+              <h3 style="margin-top: 0.75rem">HDR Playlist Source</h3>
+              <p>OBS 的 HDR 播放列表源：多条视频排队连播，走原生 HDR 管线不降级。</p>
+              <p class="text-sm mono" style="margin-top: 0.75rem">OBS Studio 30+ / 三平台</p>
+            </a>
+            <a class="card reveal" data-delay="3" href="#tvbs" style="text-decoration: none">
+              <span class="tag tag-warn">预览版 v0.0.1</span>
+              <h3 style="margin-top: 0.75rem">tv-obsbroadcast-scheduler</h3>
+              <p>电视台式自动播出：按节目单到点硬切，播完自动接下一条。</p>
+              <p class="text-sm mono" style="margin-top: 0.75rem">Windows / macOS / Linux</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 01 Stream Live Translate ============ -->
+      <section class="section" id="slt">
+        <div class="container">
+          <div class="grid grid-2" style="align-items: start">
+            <div class="reveal">
+              <span class="eyebrow">01 · 实时字幕</span>
+              <h2>Stream Live Translate</h2>
+              <p>
+                OBS 实时画面翻译，实时显示字幕。从媒体源内部取音频，交给大模型流式翻译，
+                再把中文字幕压回直播画面 —— 外语发布会直播时尤其好用。
+              </p>
+              <ul>
+                <li>音频直接从 OBS 源内部取，不受系统其它声音干扰</li>
+                <li>中文直通不翻译，其它语种自动同传为中文</li>
+                <li>VAD 与音乐检测：静音、音乐片段自动跳过</li>
+                <li>侧边栏控制台，填 Key 调样式不用切出 OBS</li>
+                <li>支持完全本地部署，音频不出本机</li>
+              </ul>
+              <div class="tag-row" style="margin: 1.25rem 0">
+                <span class="tag">Windows 10/11 x64</span>
+                <span class="tag">macOS 13+ Apple Silicon</span>
+                <span class="tag">Linux x64</span>
+                <span class="tag">MIT</span>
+              </div>
+              <p class="text-sm text-muted">最新发行版：v0.0.34（2026-09-24）</p>
+              <div class="btn-row" style="margin-top: 1.25rem">
+                <a
+                  class="btn btn-primary"
+                  href="https://github.com/buxicim2026/stream-live-translate/releases/latest"
+                  target="_blank"
+                  rel="noopener"
+                  >下载最新版</a
+                >
+                <a class="btn btn-ghost" href="plugin.html">查看详情</a>
+                <a
+                  class="btn btn-ghost"
+                  href="https://github.com/buxicim2026/stream-live-translate"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub 仓库</a
+                >
+              </div>
+            </div>
+
+            <div class="reveal" data-delay="2">
+              <div class="live-mock">
+                <div class="mock-topbar">
+                  <span class="mock-dot live"></span>
+                  <span class="mock-dot"></span>
+                  <span class="mock-dot"></span>
+                  <span class="mock-title">OBS · 实时字幕</span>
+                  <span class="mock-badge">LIVE</span>
+                </div>
+                <div class="mock-screen">
+                  <span class="mock-stage">Live</span>
+                  <div class="mock-captions">
+                    <p class="mock-line is-foreign">And one more thing…</p>
+                    <p class="mock-line">还有一件事……</p>
+                    <p class="mock-line">这是我们迄今最快的一代产品</p>
+                  </div>
+                </div>
+                <div class="mock-foot">
+                  <span class="mock-eq" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </span>
+                  <span>浏览器源叠加字幕 · 样式可调</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 02 HDR Playlist Source ============ -->
+      <section class="section" id="hdr">
+        <div class="container">
+          <div class="grid grid-2" style="align-items: start">
+            <div class="reveal">
+              <span class="eyebrow">02 · HDR 播放列表</span>
+              <h2>HDR Playlist Source</h2>
+              <p>
+                OBS 的「HDR 播放列表源」：把一串视频排队连续播放，走 OBS 原生 HDR 管线
+                （P010 / Rec.2100 PQ·HLG 直通），不做 8bit 降级。本地文件、整个文件夹、
+                网络流都能进列表。
+              </p>
+              <ul>
+                <li>真 HDR 直通，保留 10bit HDR 帧；配置不满足时自动按 SDR 播放</li>
+                <li>播放模式：顺序 / 循环 / 随机；播放列表支持文件、文件夹、网络地址</li>
+                <li>网络流支持 HLS（.m3u8）、DASH（.mpd）、RTMP / RTSP / SRT</li>
+                <li>交叉淡化、播放速度 50%–200%、去隔行与硬件解码</li>
+                <li>低内存模式默认开启，4K HDR 下内存与显存占用约减半</li>
+                <li>属性面板实时显示「现在播放视频参数」与「目前直播配置参数」</li>
+              </ul>
+              <div class="tag-row" style="margin: 1.25rem 0">
+                <span class="tag">OBS Studio 30+</span>
+                <span class="tag">Windows 11</span>
+                <span class="tag">macOS Apple Silicon</span>
+                <span class="tag">Linux x64</span>
+                <span class="tag">MIT</span>
+              </div>
+              <p class="text-sm text-muted">最新发行版：v0.0.3（2026-09-22）</p>
+              <div class="btn-row" style="margin-top: 1.25rem">
+                <a
+                  class="btn btn-primary"
+                  href="https://github.com/buxicim2026/HDR-Playlist-Source/releases/latest"
+                  target="_blank"
+                  rel="noopener"
+                  >下载最新版</a
+                >
+                <a
+                  class="btn btn-ghost"
+                  href="https://github.com/buxicim2026/HDR-Playlist-Source"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub 仓库</a
+                >
+              </div>
+            </div>
+
+            <div class="card reveal" data-delay="2">
+              <h3>安装与前提</h3>
+              <p class="text-sm">Windows 11（需管理员权限）：</p>
+              <div
+                class="mono"
+                style="
+                  padding: 0.9rem 1rem;
+                  border-radius: 12px;
+                  background: rgba(6, 10, 18, 0.7);
+                  border: 1px solid var(--glass-border);
+                  color: var(--c-primary);
+                  font-size: 0.82rem;
+                  line-height: 1.9;
+                  word-break: break-all;
+                "
+              >
+                bin → obs-studio\obs-plugins\64bit\<br />
+                data → obs-studio\data\obs-plugins\HDR-Playlist-Source\
+              </div>
+              <p class="text-sm" style="margin-top: 0.9rem">
+                Linux 放 <span class="mono">~/.config/obs-studio/plugins/</span>；macOS 放
+                <span class="mono">~/Library/Application Support/obs-studio/plugins/</span>。
+                <span class="mono">data</span> 目录必须一并复制，缺了会导致交叉淡化退化为硬切。
+              </p>
+              <p class="text-sm" style="margin-top: 0.9rem">
+                <strong style="color: var(--text-1)">真 HDR 输出前提：</strong>
+                OBS 设置 → 高级里色彩格式选 P010、色彩空间选 Rec.2100 (PQ) 或 (HLG)、
+                色彩范围 Partial，编码器用 HEVC 10bit 或 AV1 10bit。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 03 tv-obsbroadcast-scheduler ============ -->
+      <section class="section" id="tvbs">
+        <div class="container">
+          <div class="grid grid-2" style="align-items: start">
+            <div class="reveal">
+              <span class="eyebrow">03 · 自动播出</span>
+              <h2>tv-obsbroadcast-scheduler</h2>
+              <p>
+                电视台式自动播出插件：在 OBS 里只放一个普通媒体源，插件负责把一堆视频排成节目单，
+                像电视台一样到点自动硬切、播完自动接下一条，中间还能插播广告。
+                由「OBS Lua 脚本 + 本地 Rust 引擎 + 网页节目单编辑器」组成。
+              </p>
+              <ul>
+                <li>顺序连续播出，前一条播完立刻硬切下一条</li>
+                <li>导入视频时自动读出真实时长，不用手填</li>
+                <li>6 种节目类型：正片 / 公益广告 / 频道 ID / 节目预告 / 宣传片 / 插播内容</li>
+                <li>设定开播时间后自动排出每条播出时间，可提前排期</li>
+                <li>电视台报时器：整点半点浮出报时，字体、位置、底板可调</li>
+                <li>国家授时中心 NTP 对时；状态落盘，OBS 或引擎重启后接着排</li>
+                <li>播出浮窗（浏览器源）：ON AIR 灯、当前节目、下一档、剩余时间</li>
+              </ul>
+              <div class="tag-row" style="margin: 1.25rem 0">
+                <span class="tag">Windows 10+</span>
+                <span class="tag">macOS 13+ Apple Silicon</span>
+                <span class="tag">Linux x64 / arm64</span>
+                <span class="tag">MIT</span>
+              </div>
+              <p class="text-sm text-muted">最新发行版：v0.0.1（2026-09-16，预览版）</p>
+              <div class="btn-row" style="margin-top: 1.25rem">
+                <a
+                  class="btn btn-primary"
+                  href="https://github.com/buxicim2026/tv-obsbroadcast-scheduler/releases"
+                  target="_blank"
+                  rel="noopener"
+                  >下载最新版</a
+                >
+                <a
+                  class="btn btn-ghost"
+                  href="https://github.com/buxicim2026/tv-obsbroadcast-scheduler"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub 仓库</a
+                >
+              </div>
+            </div>
+
+            <div class="card reveal" data-delay="2">
+              <h3>安装与上手</h3>
+              <p class="text-sm">下载解压后保持下面结构（<span class="mono">engine</span> 必须与 lua 脚本同级）：</p>
+              <div
+                class="mono"
+                style="
+                  padding: 0.9rem 1rem;
+                  border-radius: 12px;
+                  background: rgba(6, 10, 18, 0.7);
+                  border: 1px solid var(--glass-border);
+                  color: var(--c-primary);
+                  font-size: 0.82rem;
+                  line-height: 1.9;
+                "
+              >
+                tv-obsbroadcast-scheduler\<br />
+                ├── tv_obsbroadcast_scheduler.lua<br />
+                └── engine\<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;└── tv-obsbroadcast-scheduler(.exe)
+              </div>
+              <p class="text-sm" style="margin-top: 0.9rem">
+                OBS 菜单 <strong style="color: var(--text-1)">工具 → 脚本 → 「＋」</strong>，
+                选择 <span class="mono">tv_obsbroadcast_scheduler.lua</span>，脚本会自动拉起引擎（后台运行，不弹黑窗）。
+              </p>
+              <p class="text-sm" style="margin-top: 0.9rem">
+                场景里要有一个<strong style="color: var(--text-1)">媒体源</strong>（不要用 VLC 视频源），
+                再开启 OBS WebSocket，在脚本面板填端口与密码并 Test Connection，
+                之后在网页编辑器里排节目单即可。
+              </p>
+              <p class="text-sm" style="margin-top: 0.9rem">
+                前端是 OBS Lua 脚本而不是二进制 DLL，所以不会遇到 DLL 导出符号或 libobs ABI 不匹配导致加载失败的问题。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 共同点 ============ -->
+      <section class="section">
+        <div class="container">
+          <div class="grid grid-3">
+            <article class="card reveal" data-delay="1">
+              <h3>本地运行</h3>
+              <p>都在本机跑，凭据与节目单只存本地配置文件，不上传服务器。</p>
+            </article>
+            <article class="card reveal" data-delay="2">
+              <h3>三平台</h3>
+              <p>每个插件都提供 Windows / macOS（Apple Silicon）/ Linux 发布包。</p>
+            </article>
+            <article class="card reveal" data-delay="3">
+              <h3>一直在改</h3>
+              <p>都是自己在直播里用着的工具，问题改得快，版本号也涨得快。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA ============ -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-band reveal">
+            <h2>用出问题或者有新想法？</h2>
+            <p>欢迎到 B站 找我们，或者直接去 GitHub 提 Issue。想聊合作也可以。</p>
+            <div class="btn-row">
+              <a class="btn btn-primary btn-lg" href="contact.html">联系与合作</a>
+              <a
+                class="btn btn-ghost btn-lg"
+                href="https://github.com/buxicim2026"
+                target="_blank"
+                rel="noopener"
+                >GitHub 主页</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+
+    <script type="module" src="assets/js/layout.js"></script>
+    <script src="assets/js/motion.js"></script>
+  </body>
+</html>
