@@ -209,10 +209,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  /* 圆角矩形台标 */
-  border-radius: 11px;
+  /* 横向矩形台标牌 */
+  width: 44px;
+  height: 34px;
+  /* 内边距 = 图片四周留白，让图形比外框小一圈 */
+  padding: 4px 6px;
+  border-radius: 6px;
   border: 1px solid var(--glass-border-hover);
   background: var(--c-gradient-soft);
   overflow: hidden;
@@ -220,10 +222,12 @@
 }
 
 .brand-mark img {
-  width: 100%;
+  /* 图形按比例缩放，不铺满外框 */
+  width: auto;
   height: 100%;
+  max-width: 100%;
   object-fit: contain;
-  border-radius: inherit;
+  border-radius: 2px;
 }
 
 .brand-text {
