@@ -63,6 +63,26 @@ VS Code 用户也可以用 Live Server 插件。
 | 导航顺序 | `partials/header.html` 里 `<nav class="nav-links">` 的链接顺序 |
 | 直播间 | `live.html` 里 iframe 的 `room_id`（当前 24290456）与嵌入页地址 |
 | 下载方式下拉 | `software.html` / `plugin.html` 里的 `[data-dropdown]` 区块（夸克链接改这里） |
+| 节目列表（原创节目页） | 跑 `scripts/bili-programs.ps1`，用输出结果更新 `programs.html` |
+
+### 抓 B站 数据的两个脚本
+
+| 脚本 | 作用 | 是否需要登录 |
+| --- | --- | --- |
+| `scripts/bili-programs.ps1` | 抓各 UP 的**合集/系列**（真实节目名、集数、代表视频 BV 号），输出 JSON | 不需要，纯 PowerShell |
+| `scripts/bili-videos.ps1` | 抓某个 UP 的**全部投稿** BV 号并补全标题，需要 yt-dlp | 需要（浏览器 cookie 或 `cookies.txt`） |
+
+B站 的投稿列表接口对未登录请求会返回 `412 / 352` 风控，所以「全量投稿」这条路必须带登录态：
+
+```powershell
+# 方式一：先完全退出 Edge，再执行
+powershell -ExecutionPolicy Bypass -File scripts/bili-videos.ps1 -Browser edge
+
+# 方式二：用扩展 "Get cookies.txt LOCALLY" 导出 bilibili.com 的 cookies.txt
+powershell -ExecutionPolicy Bypass -File scripts/bili-videos.ps1 -CookiesFile D:\cookies.txt
+```
+
+只需某个节目的代表作时，用第一个脚本即可（已验证可用，不需要登录）。
 
 新增一个页面：复制任一 HTML → 改标题与内容 → 在 `partials/header.html`、`partials/footer.html` 加链接 → 在 `search-index.json` 补一条 → 在 `sitemap.xml` 补一条。
 

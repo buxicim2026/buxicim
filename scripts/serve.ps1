@@ -1,4 +1,4 @@
-# 本地预览服务器（Windows PowerShell，无需安装 Node / Python）
+﻿# 本地预览服务器（Windows PowerShell，无需安装 Node / Python）
 # 用法：在项目根目录执行  powershell -File scripts/serve.ps1
 #      然后浏览器打开 http://localhost:4173
 param([int]$Port = 4173)
