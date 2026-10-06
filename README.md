@@ -65,24 +65,36 @@ VS Code 用户也可以用 Live Server 插件。
 | 下载方式下拉 | `software.html` / `plugin.html` 里的 `[data-dropdown]` 区块（夸克链接改这里） |
 | 节目列表（原创节目页） | 跑 `scripts/bili-programs.ps1`，用输出结果更新 `programs.html` |
 
-### 抓 B站 数据的两个脚本
+### 抓 B站 数据的脚本
 
 | 脚本 | 作用 | 是否需要登录 |
 | --- | --- | --- |
-| `scripts/bili-programs.ps1` | 抓各 UP 的**合集/系列**（真实节目名、集数、代表视频 BV 号），输出 JSON | 不需要，纯 PowerShell |
-| `scripts/bili-videos.ps1` | 抓某个 UP 的**全部投稿** BV 号并补全标题，需要 yt-dlp | 需要（浏览器 cookie 或 `cookies.txt`） |
+| `scripts/bili-programs.ps1` | 抓各 UP 的**合集/系列**及其中视频（加 `-All` 抓全部集数），得到节目名 + 集数 + BV + 标题 | 不需要 |
+| `scripts/bili-videos.ps1` | 合并「浏览器导出的 BV 列表」+ 合集数据，用 view 接口补标题，输出全量清单 | 不需要 |
+| `scripts/fetch-bili-media.ps1` | 下载 UP 头像与节目封面到 `assets/img/`，素材本地化 | 不需要 |
+| `scripts/cookie-to-netscape.ps1` | 把浏览器 DevTools 复制的 Cookie 头转成 `cookies.txt`（备用路线才需要） | 需要 |
 
-B站 的投稿列表接口对未登录请求会返回 `412 / 352` 风控，所以「全量投稿」这条路必须带登录态：
+**为什么不能直接抓投稿列表**：`x/space/arc/search` 对非登录请求返回 `412` 风控；而新版
+Edge / Chrome 的 cookie 用 App-Bound 加密，`yt-dlp --cookies-from-browser` 会报
+`Failed to decrypt with DPAPI`。所以改成「让浏览器自己取、接口补信息」：
 
-```powershell
-# 方式一：先完全退出 Edge，再执行
-powershell -ExecutionPolicy Bypass -File scripts/bili-videos.ps1 -Browser edge
+1. 浏览器打开 `https://space.bilibili.com/<uid>/video`，F12 → 控制台粘贴这段（自动滚动并导出 BV 号）：
 
-# 方式二：用扩展 "Get cookies.txt LOCALLY" 导出 bilibili.com 的 cookies.txt
-powershell -ExecutionPolicy Bypass -File scripts/bili-videos.ps1 -CookiesFile D:\cookies.txt
-```
+   ```js
+   (async()=>{const s=new Set();for(let i=0;i<50;i++){const m=document.documentElement.innerHTML.match(/BV[0-9A-Za-z]{10}/g)||[];m.forEach(x=>s.add(x));window.scrollTo(0,document.body.scrollHeight);await new Promise(r=>setTimeout(r,1200))}const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([[...s].join('\n')],{type:'text/plain'}));a.download='bvids.txt';a.click();console.log('共'+s.size+'条')})()
+   ```
 
-只需某个节目的代表作时，用第一个脚本即可（已验证可用，不需要登录）。
+2. 抓合集/系列（覆盖各节目的完整集数，含节目归属）：
+
+   ```powershell
+   powershell -File scripts/bili-programs.ps1 -All -OutFile D:\bili-all.json
+   ```
+
+3. 合并并补标题，得到最终清单：
+
+   ```powershell
+   powershell -File scripts/bili-videos.ps1 -BvFiles D:\bvids-385015308.txt -ProgramsJson D:\bili-all.json -OutFile D:\bili-videos.json
+   ```
 
 新增一个页面：复制任一 HTML → 改标题与内容 → 在 `partials/header.html`、`partials/footer.html` 加链接 → 在 `search-index.json` 补一条 → 在 `sitemap.xml` 补一条。
 

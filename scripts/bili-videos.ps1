@@ -1,97 +1,93 @@
-﻿# bili-videos.ps1 —— 批量导出 B站 UP 主的全部投稿（BV 号 + 标题）
+﻿# bili-videos.ps1 —— 汇总某个 UP 主的全部投稿（BV 号 + 标题 + 发布日期 + 播放量）
 #
-# 为什么需要它：B站 的「投稿列表」接口对未登录请求会返回 412/352 风控，
-#              借浏览器的登录 cookie 就能稳定拿到全量列表。
+# 背景：B站 的「投稿列表」接口对非登录请求返回 412 风控，且新版 Edge/Chrome 的 cookie
+#      用 App-Bound 加密，yt-dlp 读不了。所以采用「浏览器自己取 + 接口补信息」的组合：
 #
-# 用法（任选一种 cookie 来源）：
-#   1) 自动读浏览器 cookie（需要先完全退出该浏览器，否则数据库被锁）：
-#        powershell -ExecutionPolicy Bypass -File scripts/bili-videos.ps1 -Browser edge
-#   2) 用导出的 cookies.txt（推荐，最省事）：
-#        用浏览器扩展 "Get cookies.txt LOCALLY" 在 bilibili.com 导出，
-#        powershell -ExecutionPolicy Bypass -File scripts/bili-videos.ps1 -CookiesFile D:\cookies.txt
+#   第 1 步（浏览器，不用登录）：打开 space.bilibili.com/<uid>/video，
+#           F12 → 控制台粘贴下面这段单行脚本，会把 BV 号存成 bvids-<uid>.txt：
+#           (async()=>{const s=new Set();for(let i=0;i<50;i++){const m=document.documentElement.innerHTML.match(/BV[0-9A-Za-z]{10}/g)||[];m.forEach(x=>s.add(x));window.scrollTo(0,document.body.scrollHeight);await new Promise(r=>setTimeout(r,1200))}const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([[...s].join('\n')],{type:'text/plain'}));a.download='bvids.txt';a.click();console.log('共'+s.size+'条')})()
 #
-# 前置：yt-dlp.exe（单文件，无需 Python）
-#   https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe
+#   第 2 步（可选，更全）：跑 scripts/bili-programs.ps1 -All，拿到各合集/系列的全部集数
 #
-# 若只想拿各节目的代表作（不需要登录），用 scripts/bili-programs.ps1 更简单。
+#   第 3 步（本脚本）：把上面的结果合并，用 view 接口补标题，输出完整清单
+#
+# 用法：
+#   powershell -ExecutionPolicy Bypass -File scripts/bili-videos.ps1 -BvFiles D:\bvids-385015308.txt -ProgramsJson D:\bili-all.json -OutFile bili-videos.json
 param(
-  [int[]]$Mids = @(385015308, 11817627, 131365661),
-  [string]$Browser = '',          # edge / chrome / firefox / brave ...
-  [string]$CookiesFile = '',      # 导出的 cookies.txt
-  [string]$YtDlp = '',            # yt-dlp.exe 路径，留空则自动查找
-  [switch]$NoTitle,               # 跳过标题补全（更快）
-  [string]$OutFile = 'bili-bvids.json'
+  [string[]]$BvFiles = @(),                 # 浏览器导出的 BV 列表 txt（可多个）
+  [string]$ProgramsJson = '',               # bili-programs.ps1 -All 的输出，用来带上节目归属
+  [string]$OutFile = 'bili-videos.json',
+  [string]$CsvFile = '',
+  [switch]$NoTitle                          # 已有标题时不重复请求
 )
 
 $ErrorActionPreference = 'Stop'
 $ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
+$epoch = [datetime]'1970-01-01T00:00:00Z'
+$rows = @()
 
-# ---- 定位 yt-dlp ----
-if (-not $YtDlp) {
-  $candidates = @(
-    (Join-Path $PSScriptRoot 'yt-dlp.exe'),
-    (Join-Path (Split-Path $PSScriptRoot -Parent) 'yt-dlp.exe'),
-    'yt-dlp.exe'
-  )
-  foreach ($c in $candidates) {
-    if ($c -eq 'yt-dlp.exe' -or (Test-Path $c)) { $YtDlp = $c; break }
-  }
-}
-try { & $YtDlp --version | Out-Null } catch {
-  throw "找不到 yt-dlp.exe。请先下载：https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe"
-}
-
-# ---- cookie 参数 ----
-$cookieArgs = @()
-if ($CookiesFile) {
-  if (-not (Test-Path $CookiesFile)) { throw "cookies 文件不存在：$CookiesFile" }
-  $cookieArgs = @('--cookies', $CookiesFile)
-  Write-Host "使用 cookies.txt：$CookiesFile" -ForegroundColor DarkGray
-} elseif ($Browser) {
-  $cookieArgs = @('--cookies-from-browser', $Browser)
-  Write-Host "尝试从 $Browser 读取 cookie（需先完全退出该浏览器）" -ForegroundColor DarkGray
-} else {
-  Write-Warning '未指定 -Browser 或 -CookiesFile，B站 很可能返回 412 风控。'
-}
-
-function Get-Title([string]$bvid) {
-  try {
-    $r = Invoke-RestMethod -Uri "https://api.bilibili.com/x/web-interface/view?bvid=$bvid" `
-      -Headers @{ 'User-Agent' = $ua; 'Referer' = 'https://www.bilibili.com' } -TimeoutSec 20
-    if ($r.code -eq 0) { return $r.data.title }
-  } catch { }
-  return ''
-}
-
-$all = @()
-
-foreach ($mid in $Mids) {
-  Write-Host "==> UID $mid" -ForegroundColor Cyan
-  $url = "https://space.bilibili.com/$mid/video"
-
-  $out = & $YtDlp @cookieArgs --flat-playlist --no-warnings --print '%(id)s' $url 2>&1
-  $bvs = @($out | Where-Object { $_ -is [string] -and $_ -match '^BV[0-9A-Za-z]{10}$' })
-
-  if (-not $bvs.Count) {
-    Write-Warning "没取到 BV 号，yt-dlp 输出：`n$($out | Select-Object -First 5 | Out-String)"
-    Write-Warning '提示：412 风控时请完全退出浏览器后重试，或改用 -CookiesFile 方式。'
-    continue
-  }
-
-  Write-Host ("    共 {0} 条" -f $bvs.Count)
-  $i = 0
-  foreach ($bv in $bvs) {
-    $i++
-    $title = ''
-    if (-not $NoTitle) {
-      $title = Get-Title $bv
-      Start-Sleep -Milliseconds 220   # 温和限速
+# ---- 来源一：合集/系列（带节目归属与标题） ----
+if ($ProgramsJson) {
+  if (-not (Test-Path $ProgramsJson)) { throw "找不到 $ProgramsJson" }
+  $data = Get-Content $ProgramsJson -Raw | ConvertFrom-Json
+  foreach ($entry in $data) {
+    foreach ($p in ($entry.seasons + $entry.series)) {
+      foreach ($v in $p.videos) {
+        $rows += [pscustomobject]@{
+          mid = $entry.mid; program = $p.name; bvid = $v.bvid
+          title = $v.title; date = $v.date; views = $v.views
+        }
+      }
     }
-    $all += [pscustomobject]@{ mid = $mid; bvid = $bv; title = $title; url = "https://www.bilibili.com/video/$bv" }
-    if ($i % 20 -eq 0) { Write-Host ("    ... 已处理 {0}/{1}" -f $i, $bvs.Count) }
   }
+  Write-Host "从合集/系列读入 $($rows.Count) 条" -ForegroundColor DarkGray
 }
 
-$all | ConvertTo-Json -Depth 4 | Set-Content -Path $OutFile -Encoding UTF8
+# ---- 来源二：浏览器导出的投稿列表 ----
+$fromFiles = @()
+foreach ($f in $BvFiles) {
+  if (-not (Test-Path $f)) { Write-Warning "跳过不存在的文件：$f"; continue }
+  $fromFiles += (Get-Content $f -Encoding UTF8 | Where-Object { $_ -match '^BV[0-9A-Za-z]{10}$' })
+  Write-Host "从 $f 读入 $((Get-Content $f -Encoding UTF8 | Where-Object { $_ -match '^BV[0-9A-Za-z]{10}$' }).Count) 条" -ForegroundColor DarkGray
+}
+$fromFiles = $fromFiles | Sort-Object -Unique
+
+# 已知 BV（合集里已带的）就不用再查了
+$known = @{}
+foreach ($r in $rows) { $known[$r.bvid] = $true }
+$todo = @($fromFiles | Where-Object { -not $known[$_] })
+
+Write-Host "==> 需要补标题的 BV：$($todo.Count) 条" -ForegroundColor Cyan
+$headers = @{ 'User-Agent' = $ua; 'Referer' = 'https://www.bilibili.com' }
+$i = 0
+foreach ($bv in $todo) {
+  $i++
+  try {
+    $v = Invoke-RestMethod -Uri "https://api.bilibili.com/x/web-interface/view?bvid=$bv" -Headers $headers -TimeoutSec 25
+    if ($v.code -eq 0) {
+      $rows += [pscustomobject]@{
+        mid = $v.data.owner.mid; program = '（未归入合集）'; bvid = $bv
+        title = $v.data.title
+        date = $epoch.AddSeconds([double]$v.data.pubdate).ToLocalTime().ToString('yyyy-MM-dd')
+        views = $v.data.stat.view
+      }
+    } else {
+      Write-Warning "$bv 取不到信息：$($v.message)"
+    }
+  } catch {
+    Write-Warning "$bv 请求失败：$($_.Exception.Message)"
+  }
+  if ($i % 25 -eq 0) { Write-Host "    ... $i/$($todo.Count)" }
+  Start-Sleep -Milliseconds 250
+}
+
+# ---- 输出 ----
+$final = @($rows | Sort-Object bvid -Unique | Sort-Object mid, date -Descending)
+[IO.File]::WriteAllText($OutFile, ($final | ConvertTo-Json -Depth 4), (New-Object System.Text.UTF8Encoding($false)))
+if ($CsvFile) { $final | Export-Csv $CsvFile -NoTypeInformation -Encoding UTF8 }
+
 Write-Host ""
-Write-Host ("已保存：{0}（共 {1} 条）" -f $OutFile, $all.Count) -ForegroundColor Green
+Write-Host "已保存：$OutFile（共 $($final.Count) 条）" -ForegroundColor Green
+foreach ($g in ($final | Group-Object mid)) {
+  Write-Host ("    UID {0}：{1} 条" -f $g.Name, $g.Count)
+}
