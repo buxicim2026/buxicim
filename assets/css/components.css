@@ -723,14 +723,16 @@
 
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 10px);
+  /* 顶部只留 2px 缝隙，其余用内边距撑开高度：
+     这样鼠标从按钮移向菜单的途中始终落在菜单盒子内，菜单不会被“抖”掉 */
+  top: calc(100% + 2px);
   left: 0;
   right: auto;
   z-index: 200;
   width: max-content;
   min-width: 250px;
   max-width: min(320px, calc(100vw - 2.5rem));
-  padding: 0.4rem;
+  padding: 0.95rem 0.4rem 0.4rem;
   border: 1px solid var(--glass-border);
   border-radius: var(--r-md);
   background: rgba(12, 17, 28, 0.97);

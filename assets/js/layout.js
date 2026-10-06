@@ -99,8 +99,23 @@ function bindDropdowns() {
       setOpen(!dd.classList.contains('is-open'));
     });
 
-    dd.addEventListener('mouseenter', () => setOpen(true));
-    dd.addEventListener('mouseleave', () => setOpen(false));
+    // 关闭带一点延迟：鼠标从按钮移向菜单时不会被中途“抖”掉
+    let hideTimer = null;
+    const cancelHide = () => {
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+    };
+
+    dd.addEventListener('mouseenter', () => {
+      cancelHide();
+      setOpen(true);
+    });
+    dd.addEventListener('mouseleave', () => {
+      cancelHide();
+      hideTimer = setTimeout(() => setOpen(false), 240);
+    });
     dd.addEventListener('focusout', (e) => {
       if (!dd.contains(e.relatedTarget)) setOpen(false);
     });
