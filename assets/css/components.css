@@ -209,9 +209,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* 无外框：只显示台标图形本身 */
+  /* 无外框：只显示台标图形本身；高度与旁边两行文字持平 */
   width: auto;
-  height: 52px;
+  height: 36px;
   padding: 0;
   border: 0;
   background: none;
