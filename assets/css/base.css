@@ -330,7 +330,10 @@ body::after {
   opacity: 0;
   transform: translate3d(0, 16px, 0);
   transition: opacity 0.62s var(--ease), transform 0.62s var(--ease);
-  will-change: opacity, transform;
+  /* 注意：这里不要加 will-change。
+     常驻的 will-change 会让元素创建层叠上下文，把内部绝对定位弹出层
+     （如下载下拉菜单）的 z-index 限制在本层，导致被后面的区块盖住 ——
+     表现为菜单可见但鼠标点不到、悬停即消失。 */
 }
 
 .reveal.is-in {

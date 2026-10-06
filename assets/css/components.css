@@ -703,6 +703,17 @@
   align-items: stretch;
 }
 
+/* 按钮与菜单之间的“过渡桥”：鼠标从按钮滑向菜单时仍算停在 .dropdown 上，
+   避免中途被判为离开而收起菜单（本身不可见，不挡内容） */
+.dropdown::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px;
+}
+
 .dropdown > .btn:first-child {
   border-radius: var(--r-pill) 0 0 var(--r-pill);
 }
@@ -734,28 +745,26 @@
   width: max-content;
   min-width: 250px;
   max-width: min(320px, calc(100vw - 2.5rem));
-  padding: 0.95rem 0.4rem 0.4rem;
+  padding: 0.9rem 0.4rem 0.4rem;
   border: 1px solid var(--glass-border);
   border-radius: var(--r-md);
-  background: rgba(12, 17, 28, 0.97);
-  backdrop-filter: blur(16px);
-  box-shadow: var(--glass-shadow);
+  /* 刻意不用 backdrop-filter / transform：
+     这两个属性在部分环境（缩放、GPU 驱动差异）下会让元素的“可点击区域”
+     与显示位置错位 —— 表现就是鼠标明明在菜单上却点不到、一点菜单就消失。 */
+  background: #0f1626;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0.22s;
+  transition: opacity 0.18s var(--ease), visibility 0.18s;
 }
 
-/* 菜单只由「点击」控制开合（不再用 :hover —— 悬停判定在部分环境下不稳定，
-   指针刚移到菜单上就会被判为离开，导致菜单闪退，影响点击下载）。
-   .is-open      —— 点击箭头展开 / 再点收起
-   :focus-within —— 键盘 Tab 聚焦时同样可操作
-   收起条件：点击箭头、点击页面其它位置、按 Esc。 */
+/* 悬停展开（鼠标在按钮或菜单上都能保持）＋ 点击箭头锁定 ＋ 键盘聚焦。
+   三者任一成立菜单就保持显示，收起条件：移开鼠标、再点箭头、点别处、Esc。 */
+.dropdown:hover .dropdown-menu,
 .dropdown.is-open .dropdown-menu,
 .dropdown:focus-within .dropdown-menu {
   opacity: 1;
   visibility: visible;
-  transform: none;
 }
 
 .dropdown-menu a {
