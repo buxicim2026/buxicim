@@ -709,8 +709,10 @@
 
 .dropdown-toggle {
   margin-left: -1px;
-  padding-inline: 0.8rem;
+  /* 点击区域做大一点，好点中 */
+  padding-inline: 1.05rem;
   border-radius: 0 var(--r-pill) var(--r-pill) 0;
+  cursor: pointer;
 }
 
 .dropdown-toggle svg {
@@ -744,12 +746,12 @@
   transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0.22s;
 }
 
-/* 三种方式都能保持菜单可见：
-   :hover  —— 鼠标在按钮或菜单上（CSS 原生判定，最稳，不受 JS 时序影响）
-   .is-open —— JS 点击箭头后锁定展开
-   :focus-within —— 键盘 Tab 聚焦时可操作 */
+/* 菜单只由「点击」控制开合（不再用 :hover —— 悬停判定在部分环境下不稳定，
+   指针刚移到菜单上就会被判为离开，导致菜单闪退，影响点击下载）。
+   .is-open      —— 点击箭头展开 / 再点收起
+   :focus-within —— 键盘 Tab 聚焦时同样可操作
+   收起条件：点击箭头、点击页面其它位置、按 Esc。 */
 .dropdown.is-open .dropdown-menu,
-.dropdown:hover .dropdown-menu,
 .dropdown:focus-within .dropdown-menu {
   opacity: 1;
   visibility: visible;
