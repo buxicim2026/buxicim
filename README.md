@@ -4,30 +4,36 @@ B站 UP 主「不息传播」的官方宣传站，纯手写 HTML / CSS / JS 静�
 
 - 线上地址：`https://buxicim2026.github.io/buxicim/`
 - 品牌定位：专注科技生活内容的自媒体，偶尔直播有趣的发布会
-- 站内含一个自研工具板块：**Stream Live Translate**（OBS 实时 AI 字幕插件）
+- 站内含自研软件板块「不息软件」：**直播译站**（实时字幕）、**万能播放列表**（HDR 播放列表源）、**电视塔**（电视台式自动播出）
 
 ## 本地预览
 
 公共头尾用 `fetch` 注入，**必须通过 http(s) 打开，不能直接双击 HTML（file://）**：
 
+```powershell
+# Windows（无需装 Node / Python，推荐）
+powershell -File scripts/serve.ps1      # → http://localhost:4173
+```
+
 ```bash
-# 任选其一
+# 其它环境任选其一
 npx serve .
 python -m http.server 8080
 ```
 
-然后访问 `http://localhost:3000`（`serve` 默认端口）或 `http://localhost:8080`。
+访问对应地址即可（`scripts/serve.ps1` 默认 4173，`serve` 默认 3000）。
 VS Code 用户也可以用 Live Server 插件。
 
 ## 目录结构
 
 ```
 .
-├── index.html        首页：Hero、内容方向、数据、发布会直播、插件、平台矩阵
+├── index.html        首页：Hero、内容方向、数据、发布会直播、不息软件、平台矩阵
+├── programs.html     原创节目：不息传播自制的节目 + 合作的独立创作者
+├── live.html         直播频道：B站 直播间嵌入、常播栏目、开播预告
 ├── about.html        关于我们：故事、理念、发展历程、账号数据
-├── content.html      内容与直播：栏目、视频、直播预告
-├── software.html     不息软件：三个自研 OBS 插件总览与下载
-├── plugin.html       Stream Live Translate 详情页：能力、演示、四步上手、模型兼容、FAQ
+├── software.html     不息软件：三款自研 OBS 插件总览与下载
+├── plugin.html       直播译站详情页：能力、演示、四步上手、模型兼容、FAQ
 ├── contact.html      联系与合作：平台入口、合作方式、留言表单
 ├── search.html       站内搜索
 ├── 404.html          404 页
@@ -54,27 +60,32 @@ VS Code 用户也可以用 Live Server 插件。
 | 配色与字号 | `assets/css/base.css` 顶部的 `:root` 变量 |
 | Logo / 台标 | 替换 `assets/img/logo.png`（导航、页脚、favicon、分享图都用它） |
 | 搜索结果 | `assets/data/search-index.json`（新增页面记得补一条） |
+| 导航顺序 | `partials/header.html` 里 `<nav class="nav-links">` 的链接顺序 |
+| 直播间 | `live.html` 里 iframe 的 `room_id`（当前 24290456）与嵌入页地址 |
+| 下载方式下拉 | `software.html` / `plugin.html` 里的 `[data-dropdown]` 区块（夸克链接改这里） |
 
 新增一个页面：复制任一 HTML → 改标题与内容 → 在 `partials/header.html`、`partials/footer.html` 加链接 → 在 `search-index.json` 补一条 → 在 `sitemap.xml` 补一条。
 
 ## 不息软件（自研插件）
 
-`software.html` 汇总三个自研 OBS 插件，下载按钮指向各自 GitHub Releases 的最新发行版：
+`software.html` 汇总三款自研 OBS 插件。每款的「下载最新版」指向 GitHub Releases 最新发行版，
+按钮右侧小箭头展开后还有 **快速下载**（夸克网盘 `https://pan.quark.cn/s/5aa59a439504`，国内网络更稳）。
 
-| 软件 | 说明 | 下载地址 |
-| --- | --- | --- |
-| Stream Live Translate | 实时画面翻译、实时显示字幕（详情页 `plugin.html`） | `buxicim2026/stream-live-translate/releases/latest` |
-| HDR Playlist Source | HDR 播放列表源，多条视频连播不降级 | `buxicim2026/HDR-Playlist-Source/releases/latest` |
-| tv-obsbroadcast-scheduler | 电视台式自动播出（预览版） | `buxicim2026/tv-obsbroadcast-scheduler/releases` |
+| 软件 | 说明 | 当前版本 | 仓库 |
+| --- | --- | --- | --- |
+| 直播译站 Stream Live Translate | 实时画面翻译、实时显示字幕（详情页 `plugin.html`） | v0.0.35 | `buxicim2026/stream-live-translate` |
+| 万能播放列表 HDR Playlist Source | HDR 播放列表源，多条视频连播不降级 | v0.0.3 | `buxicim2026/HDR-Playlist-Source` |
+| 电视塔 tv-obsbroadcast-scheduler | 电视台式自动播出 | v0.0.2 | `buxicim2026/tv-obsbroadcast-scheduler` |
 
-> 插件发新版后，记得同步 `software.html` 与 `plugin.html` 里显示的版本号。
+> 发新版后记得同步 `software.html` / `plugin.html` 里的版本号，并更新夸克网盘里的安装包。
 
 ## 待补充清单（TODO）
 
 1. `assets/data/site.js` → `site.email`：商务合作邮箱（填了 contact 页表单才能用）
 2. `assets/data/site.js` → `platforms` 里 AcFun 与微信公众号的 `url`
-3. `assets/data/site.js` → `videos`：填入 B站 视频的 BV 号，再按 `content.html` 里的注释复制卡片
-4. 绑定自定义域名时：在仓库 Settings → Pages 里填域名，并同步更新 `sitemap.xml`、`robots.txt`
+3. `programs.html`：想给某个创作者补上具体节目时，可直接加卡片（复用 `.creator` 区块）
+4. `live.html`：直播间换号时改 iframe 里的 `room_id`
+5. 绑定自定义域名时：在仓库 Settings → Pages 里填域名，并同步更新 `sitemap.xml`、`robots.txt`
 
 搜索 TODO：在项目里搜 `TODO` 可以一次找齐。
 

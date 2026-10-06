@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO: 上线后把 USERNAME.github.io 全局替换为真实站点地址 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://buxicim2026.github.io/buxicim/</loc>
@@ -12,7 +11,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://buxicim2026.github.io/buxicim/content.html</loc>
+    <loc>https://buxicim2026.github.io/buxicim/programs.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://buxicim2026.github.io/buxicim/live.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

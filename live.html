@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>直播频道 | 不息传播</title>
+    <meta
+      name="description"
+      content="不息传播直播频道：科技生活、发布会直播、工具与插件等栏目，以及 B站 直播间入口与开播预告。"
+    />
+    <meta name="keywords" content="不息传播,直播频道,发布会直播,B站直播间,24290456,OBS 直播" />
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+
+    <meta property="og:title" content="直播频道 | 不息传播" />
+    <meta property="og:description" content="科技生活、发布会直播、工具与插件 —— 开播就在这里。" />
+    <meta property="og:image" content="https://buxicim2026.github.io/buxicim/assets/img/logo.png" />
+    <meta name="theme-color" content="#0A0E17" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+
+  <body>
+    <div data-include="header"></div>
+
+    <main id="main">
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow reveal">直播频道</span>
+          <h1 class="reveal" data-delay="1">开播就在这儿</h1>
+          <p class="reveal" data-delay="2">
+            有意思的发布会我们都会播，边看边聊；平时也会直播聊聊科技生活里的新鲜事。
+            下面是 B站 直播间，没开播时显示的是回放或休息画面。
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ 直播间 ============ -->
+      <section class="section" id="room">
+        <div class="container">
+          <div class="live-embed-head reveal">
+            <div class="live-room-meta">
+              <span class="live-pulse" aria-hidden="true"></span>
+              <span>B站 直播间 · 房间号 24290456</span>
+            </div>
+            <a
+              class="btn btn-ghost btn-sm"
+              href="https://live.bilibili.com/24290456"
+              target="_blank"
+              rel="noopener"
+              >在 B站 打开直播间</a
+            >
+          </div>
+
+          <div class="live-embed reveal" data-delay="1">
+            <iframe
+              src="https://live.bilibili.com/blackboard/html5mobileplayer.html?room_id=24290456&danmaku=0&high_quality=1"
+              title="不息传播 B站 直播间"
+              allowfullscreen
+              frameborder="0"
+              scrolling="no"
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <p class="text-sm text-muted reveal" style="margin-top: 0.9rem">
+            播放器无法显示时，直接点上面的按钮到 B站 直播间观看。
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ 直播栏目 ============ -->
+      <section class="section" id="channels">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="eyebrow">我们播什么</span>
+            <h2>常播的三类内容</h2>
+          </div>
+
+          <div class="grid grid-3">
+            <article class="card reveal" data-delay="1">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5C7" stroke-width="1.8">
+                  <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+                </svg>
+              </span>
+              <h3>科技生活</h3>
+              <p>产品体验、使用技巧与生活化的科技选题。</p>
+              <span class="tag tag-accent">视频</span>
+            </article>
+
+            <article class="card reveal" data-delay="2">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3A86FF" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M7.5 7.5a6.4 6.4 0 000 9M16.5 16.5a6.4 6.4 0 000-9" />
+                </svg>
+              </span>
+              <h3>发布会直播</h3>
+              <p>有意思的发布会直播，实时解说与讨论，外语内容直接上中文字幕。</p>
+              <span class="tag tag-accent">直播</span>
+            </article>
+
+            <article class="card reveal" data-delay="3">
+              <span class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6C5CE7" stroke-width="1.8">
+                  <path d="M8 6l-5 6 5 6M16 6l5 6-5 6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <h3>工具与插件</h3>
+              <p>自研工具的功能演示、上手教程与更新记录。</p>
+              <span class="tag tag-accent">教程</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 开播预告 ============ -->
+      <section class="section" id="notice">
+        <div class="container">
+          <div class="live-banner reveal">
+            <div class="live-banner-l">
+              <span class="live-pulse" aria-hidden="true"></span>
+              <div>
+                <strong style="display: block; font-size: 1.05rem">下一场直播</strong>
+                <span class="text-sm text-muted">
+                  开播信息会提前发在 B站 动态与微信公众号，关注就不错过。
+                </span>
+              </div>
+            </div>
+            <a class="btn btn-primary" href="https://space.bilibili.com/385015308" target="_blank" rel="noopener">
+              关注等开播提醒
+            </a>
+          </div>
+
+          <div class="notice reveal" style="margin-top: 1.5rem">
+            <span>💡</span>
+            <div>
+              <strong>关于字幕：</strong>
+              直播海外发布会时，我们会用自研的
+              <a href="software.html#slt">直播译站</a>
+              插件把外语实时译成中文字幕压在画面上。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA ============ -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-band reveal">
+            <h2>想看我们自己做的节目？</h2>
+            <p>除了直播，我们和几位独立创作者还在持续更新原创节目。</p>
+            <div class="btn-row">
+              <a class="btn btn-primary btn-lg" href="programs.html">看原创节目</a>
+              <a class="btn btn-ghost btn-lg" href="contact.html">联系与合作</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+
+    <script type="module" src="assets/js/layout.js"></script>
+    <script src="assets/js/motion.js"></script>
+  </body>
+</html>

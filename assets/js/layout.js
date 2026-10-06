@@ -70,6 +70,35 @@ function bindNavToggle() {
   });
 }
 
+/** 下拉菜单（下载方式等）：桌面 hover 展开，移动端点击展开 */
+function bindDropdowns() {
+  document.querySelectorAll('[data-dropdown]').forEach((dd) => {
+    const toggle = dd.querySelector('.dropdown-toggle');
+    const setOpen = (open) => {
+      dd.classList.toggle('is-open', open);
+      toggle?.setAttribute('aria-expanded', String(open));
+    };
+
+    toggle?.addEventListener('click', (e) => {
+      e.preventDefault();
+      setOpen(!dd.classList.contains('is-open'));
+    });
+
+    dd.addEventListener('mouseenter', () => setOpen(true));
+    dd.addEventListener('mouseleave', () => setOpen(false));
+    dd.addEventListener('focusout', (e) => {
+      if (!dd.contains(e.relatedTarget)) setOpen(false);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dd.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  });
+}
+
 /** 返回顶部按钮 */
 function mountBackToTop() {
   const btn = document.createElement('button');
@@ -118,6 +147,7 @@ function bindConfig() {
   markActiveNav();
   bindNavToggle();
   bindConfig();
+  bindDropdowns();
   mountBackToTop();
   document.documentElement.classList.add('layout-ready');
   document.dispatchEvent(new CustomEvent('layout:injected'));

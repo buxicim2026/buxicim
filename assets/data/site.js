@@ -17,15 +17,16 @@ export const site = {
   intro:
     '我们是专注于科技生活内容的自媒体，偶尔会直播有趣的发布会。欢迎在ac，wx关注我们',
   avatar: 'https://i0.hdslb.com/bfs/face/091a0d0dfdd5bd044cb084d85906851cbb13a60b.jpg',
-  // TODO: 上线后替换为真实站点地址（GitHub Pages 或自定义域）
   url: 'https://buxicim2026.github.io/buxicim',
   email: '', // TODO: 商务合作邮箱
 
+  // 导航顺序与 partials/header.html 保持一致
   nav: [
     { text: '首页', href: 'index.html' },
+    { text: '原创节目', href: 'programs.html' },
+    { text: '直播频道', href: 'live.html' },
+    { text: '不息软件', href: 'software.html' },
     { text: '关于我们', href: 'about.html' },
-    { text: '内容与直播', href: 'content.html' },
-    { text: '字幕插件', href: 'plugin.html' },
     { text: '联系合作', href: 'contact.html' },
   ],
 };
@@ -135,9 +136,10 @@ export const plugin = {
   desc:
     '从 OBS 媒体源内部取音频，交给大模型流式翻译，再把字幕叠加回画面。海外发布会直播时，外语内容实时变成中文字幕。',
   platforms: ['Windows 10/11 x64', 'macOS 13+ (Apple Silicon)', 'Linux x64 (Debian 11+ / Ubuntu 20.04+)'],
-  // TODO: 替换为真实 Releases 地址
-  downloadUrl: 'https://github.com/USERNAME/stream-live-translate/releases',
-  repoUrl: 'https://github.com/USERNAME/stream-live-translate',
+  // 三款软件共用：快速下载（夸克网盘）
+  quarkUrl: 'https://pan.quark.cn/s/5aa59a439504',
+  downloadUrl: 'https://github.com/buxicim2026/stream-live-translate/releases/latest',
+  repoUrl: 'https://github.com/buxicim2026/stream-live-translate',
   features: [
     { icon: 'box', title: '复制即用', desc: '插件文件夹复制进 OBS 插件目录，无需安装器；OBS 启动自动拉起引擎。' },
     { icon: 'audio', title: 'OBS 内部取音频', desc: '音频滤镜直接捕获媒体源声音，不受系统其它声音干扰。' },

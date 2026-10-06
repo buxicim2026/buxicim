@@ -810,3 +810,85 @@ table.req tr:last-child td {
     flex-direction: column;
   }
 }
+
+/* ---------- 直播间嵌入 ---------- */
+.live-embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: #0d1320;
+  box-shadow: var(--glass-shadow);
+}
+
+.live-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.live-embed-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+}
+
+.live-room-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+}
+
+/* ---------- 原创节目：创作者卡 ---------- */
+.creator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.creator-head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.creator-avatar {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border-hover);
+  background: var(--c-gradient-soft);
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0, 229, 199, 0.16);
+}
+
+.creator-name {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.creator-role {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--c-primary);
+  letter-spacing: 0.04em;
+}
+
+.creator-quote {
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-left: 2px solid var(--c-primary);
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+}

@@ -692,3 +692,80 @@
     display: none;
   }
 }
+
+/* ---------- 下载方式下拉 ---------- */
+.dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.dropdown > .btn:first-child {
+  border-radius: var(--r-pill) 0 0 var(--r-pill);
+}
+
+.dropdown-toggle {
+  margin-left: -1px;
+  padding-inline: 0.8rem;
+  border-radius: 0 var(--r-pill) var(--r-pill) 0;
+}
+
+.dropdown-toggle svg {
+  transition: transform 0.26s var(--ease);
+}
+
+.dropdown.is-open .dropdown-toggle svg {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: var(--z-top);
+  min-width: 250px;
+  max-width: min(320px, calc(100vw - 3rem));
+  padding: 0.4rem;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-md);
+  background: rgba(12, 17, 28, 0.97);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--glass-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0.22s;
+}
+
+.dropdown.is-open .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.dropdown-menu a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--r-sm);
+  color: var(--text-1);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.dropdown-menu a span {
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--c-primary);
+}
+
+.dropdown-menu a:hover span {
+  color: var(--text-2);
+}

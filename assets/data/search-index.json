@@ -2,8 +2,20 @@
   {
     "title": "首页 · 不息传播",
     "url": "index.html",
-    "desc": "追梦不停，创造无限。专注科技生活内容的自媒体，偶尔直播有趣的发布会，并自研三个 OBS 插件。",
+    "desc": "追梦不停，创造无限。专注科技生活内容的自媒体，偶尔直播有趣的发布会，并自研三款 OBS 插件。",
     "keywords": "不息传播 首页 科技生活 自媒体 发布会 直播 字幕 简介"
+  },
+  {
+    "title": "原创节目",
+    "url": "programs.html",
+    "desc": "不息传播自己做的节目，以及一起更新的独立创作者：blueskyHD 的数码好物与摄影、中庸电视的怀旧数码。",
+    "keywords": "原创节目 节目 blueskyHD 中庸电视 掌上档案 老机资料库 车林旧事 数码 怀旧 摄影 创作者"
+  },
+  {
+    "title": "直播频道",
+    "url": "live.html",
+    "desc": "B站 直播间（房间号 24290456）与常播内容：科技生活、发布会直播、工具与插件教程。",
+    "keywords": "直播频道 直播间 发布会直播 B站 24290456 开播 预告 OBS 字幕"
   },
   {
     "title": "关于我们",
@@ -12,40 +24,34 @@
     "keywords": "关于 品牌故事 理念 历程 时间线 团队 粉丝"
   },
   {
-    "title": "内容与直播",
-    "url": "content.html",
-    "desc": "科技生活、发布会直播、工具与插件等栏目，以及 B站 视频与下一场直播预告。",
-    "keywords": "内容 栏目 视频 直播 发布会 B站 BV号 预告"
-  },
-  {
     "title": "不息软件 · 自研 OBS 插件",
     "url": "software.html",
-    "desc": "三个自研 OBS 插件总览：实时字幕、HDR 播放列表源、电视台式自动播出，附最新发行版下载。",
-    "keywords": "不息软件 插件 软件 下载 开源 OBS 自研 发布版"
+    "desc": "三款自研 OBS 插件：直播译站、万能播放列表、电视塔，附最新发行版与夸克网盘快速下载。",
+    "keywords": "不息软件 插件 软件 下载 快速下载 夸克 网盘 开源 OBS 自研 发布版"
   },
   {
-    "title": "Stream Live Translate · 实时字幕插件",
+    "title": "直播译站 Stream Live Translate · 实时字幕插件",
     "url": "software.html#slt",
-    "desc": "OBS 实时画面翻译、实时显示字幕：内部取音频、流式翻译、VAD 音乐检测，最新版 v0.0.34。",
-    "keywords": "Stream Live Translate 实时字幕 同传 翻译 下载 字幕 不息软件"
+    "desc": "OBS 实时画面翻译、实时显示字幕：内部取音频、流式翻译、VAD 音乐检测，最新版 v0.0.35。",
+    "keywords": "直播译站 Stream Live Translate 实时字幕 同传 翻译 下载 字幕 不息软件"
   },
   {
-    "title": "HDR Playlist Source · HDR 播放列表源",
+    "title": "万能播放列表 HDR Playlist Source",
     "url": "software.html#hdr",
     "desc": "OBS 的 HDR 播放列表源：多条视频排队连播，P010 / Rec.2100 PQ·HLG 直通不降级，最新版 v0.0.3。",
-    "keywords": "HDR Playlist Source 播放列表 连播 HDR 10bit P010 网络流 HLS 下载"
+    "keywords": "万能播放列表 HDR Playlist Source 播放列表 连播 HDR 10bit P010 网络流 HLS 下载"
   },
   {
-    "title": "tv-obsbroadcast-scheduler · 电视台式自动播出",
+    "title": "电视塔 tv-obsbroadcast-scheduler · 电视台式自动播出",
     "url": "software.html#tvbs",
-    "desc": "按节目单到点硬切、播完自动接下一条，含报时器与 NTP 授时，最新版 v0.0.1（预览版）。",
-    "keywords": "tv-obsbroadcast-scheduler 自动播出 节目单 排期 报时器 授时 电视台 Lua 下载"
+    "desc": "按节目单到点硬切、播完自动接下一条，含报时器与 NTP 授时，最新版 v0.0.2 正式版。",
+    "keywords": "电视塔 tv-obsbroadcast-scheduler 自动播出 节目单 排期 报时器 授时 电视台 Lua 下载"
   },
   {
-    "title": "插件详情：Stream Live Translate",
+    "title": "直播译站 详情：能力与教程",
     "url": "plugin.html",
-    "desc": "Stream Live Translate 完整说明：能力清单、四步上手教程、模型兼容性、系统要求与常见问题。",
-    "keywords": "插件 详情 OBS 字幕 安装 教程 模型 兼容 FAQ"
+    "desc": "直播译站的完整说明：能力清单、四步上手教程、模型兼容性、系统要求与常见问题。",
+    "keywords": "插件 详情 OBS 字幕 安装 教程 模型 兼容 FAQ 直播译站"
   },
   {
     "title": "插件：能力清单",
@@ -62,14 +68,14 @@
   {
     "title": "插件：模型兼容性",
     "url": "plugin.html#models",
-    "desc": "可用的实时语音模型与不可用的模型对照，含 FunASR、speech-to-speech 本地自部署方案。",
-    "keywords": "模型 兼容 Qwen GLM OpenAI Realtime FunASR 本地部署 网关 ASR"
+    "desc": "通义 Qwen（含 qwen3.8-livetranslate 与 qwen-audio-3.1 系列）、智谱 GLM、OpenAI Realtime，以及本地自部署方案。",
+    "keywords": "模型 兼容 Qwen GLM OpenAI Realtime FunASR 本地部署 网关 ASR qwen3.8 qwen-audio-3.1"
   },
   {
     "title": "插件：系统要求",
     "url": "plugin.html#requirements",
-    "desc": "Windows 10/11、macOS 13+ Apple Silicon、Linux x64 的版本与依赖要求。",
-    "keywords": "系统要求 Windows macOS Linux 依赖 alsa ffmpeg"
+    "desc": "OBS Studio 30+、Windows 10/11、macOS 13+ Apple Silicon、Linux x64 的版本与依赖要求。",
+    "keywords": "系统要求 OBS 30 Windows macOS Linux 依赖 alsa ffmpeg"
   },
   {
     "title": "插件：常见问题",

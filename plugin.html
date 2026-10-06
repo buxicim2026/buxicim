@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Stream Live Translate · OBS 实时 AI 字幕插件 | 不息传播</title>
+    <title>直播译站 Stream Live Translate · OBS 实时 AI 字幕插件 | 不息传播</title>
     <meta
       name="description"
-      content="不息传播自研的 OBS 实时 AI 字幕 / 同声传译插件：从媒体源内部取音频，流式翻译，实时压中文字幕。免安装、跨平台、支持本地部署。"
+      content="直播译站（Stream Live Translate）—— 不息传播自研的 OBS 实时 AI 字幕 / 同声传译插件：从媒体源内部取音频，流式翻译，实时压中文字幕。免安装、跨平台、支持本地部署。"
     />
     <meta name="keywords" content="OBS 插件,实时字幕,AI 同传,直播字幕,Stream Live Translate,不息传播,FunASR" />
     <link rel="icon" type="image/png" href="assets/img/logo.png" />
 
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Stream Live Translate · OBS 实时 AI 字幕插件" />
+    <meta property="og:title" content="直播译站 Stream Live Translate · OBS 实时 AI 字幕插件" />
     <meta property="og:description" content="从 OBS 媒体源内部取音频，大模型流式翻译，实时压中文字幕。" />
     <meta name="theme-color" content="#0A0E17" />
 
@@ -32,13 +32,18 @@
             <a href="software.html">← 返回不息软件</a>
           </p>
           <span class="eyebrow reveal">不息软件 · 01</span>
-          <h1 class="reveal" data-delay="1">Stream Live Translate</h1>
+          <h1 class="reveal" data-delay="1">
+            直播译站<span class="text-sm mono" style="display: block; margin-top: 0.5rem; color: var(--c-primary)"
+              >Stream Live Translate</span
+            >
+          </h1>
           <p class="reveal" data-delay="2">
             给直播画面加上实时中文字幕的 OBS 插件。从媒体源内部取音频，交给大模型流式翻译，
             再把字幕叠加回画面 —— 外语发布会直播时尤其好用。
           </p>
 
           <div class="tag-row reveal" data-delay="3" style="justify-content: center; margin-top: 1.5rem">
+            <span class="tag tag-accent">OBS Studio 30+</span>
             <span class="tag tag-accent">Windows 10/11 x64</span>
             <span class="tag tag-accent">macOS 13+ (Apple Silicon)</span>
             <span class="tag tag-accent">Linux x64</span>
@@ -46,13 +51,37 @@
           </div>
 
           <div class="btn-row reveal" data-delay="4" style="justify-content: center; margin-top: 2rem">
-            <a
-              class="btn btn-primary btn-lg"
-              href="https://github.com/buxicim2026/stream-live-translate/releases/latest"
-              target="_blank"
-              rel="noopener"
-              >下载最新版 v0.0.34</a
-            >
+            <div class="dropdown" data-dropdown>
+              <a
+                class="btn btn-primary btn-lg"
+                href="https://github.com/buxicim2026/stream-live-translate/releases/latest"
+                target="_blank"
+                rel="noopener"
+                >下载最新版 v0.0.35</a
+              >
+              <button
+                class="btn btn-primary btn-lg dropdown-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-label="更多下载方式"
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="dropdown-menu">
+                <a
+                  href="https://github.com/buxicim2026/stream-live-translate/releases/latest"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub 官方发布页<span>按平台下载 OBS 插件包</span></a
+                >
+                <a href="https://pan.quark.cn/s/5aa59a439504" target="_blank" rel="noopener">
+                  快速下载<span>夸克网盘 · 国内网络更稳</span>
+                </a>
+              </div>
+            </div>
             <a class="btn btn-ghost btn-lg" href="#steps">四步上手</a>
           </div>
         </div>
@@ -244,6 +273,18 @@
                   <span>同传 / ASR / Qwen-Audio，云端开箱即用</span>
                 </li>
                 <li class="model-item">
+                  <strong>qwen3.8-livetranslate-flash-realtime</strong>
+                  <span>通义新版同传模型，官方推荐</span>
+                </li>
+                <li class="model-item">
+                  <strong>qwen-audio-3.1-asr-flash-message / streaming</strong>
+                  <span>通义新版 ASR，中文字幕延迟更低</span>
+                </li>
+                <li class="model-item">
+                  <strong>qwen-audio-3.1-realtime-plus · qwen3.8-omni-flash-realtime</strong>
+                  <span>通义新版全模态实时接口</span>
+                </li>
+                <li class="model-item">
                   <strong>智谱 GLM-Realtime</strong>
                   <span>OpenAI Realtime 兼容</span>
                 </li>
@@ -310,6 +351,11 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td>OBS Studio</td>
+                  <td>30 及以上</td>
+                  <td>低于 30.0.0 时插件会在日志中给出警告，兼容性未知</td>
+                </tr>
                 <tr>
                   <td>Windows</td>
                   <td>Windows 10 1809+</td>
@@ -434,13 +480,37 @@
             <h2>要不要给自己的直播加一层字幕？</h2>
             <p>插件开源免费，照着四步走就能跑起来。遇到问题或在直播里用出了新玩法，欢迎来聊。</p>
             <div class="btn-row">
-              <a
-                class="btn btn-primary btn-lg"
-                href="https://github.com/buxicim2026/stream-live-translate/releases/latest"
-                target="_blank"
-                rel="noopener"
-                >下载最新版</a
-              >
+              <div class="dropdown" data-dropdown>
+                <a
+                  class="btn btn-primary btn-lg"
+                  href="https://github.com/buxicim2026/stream-live-translate/releases/latest"
+                  target="_blank"
+                  rel="noopener"
+                  >下载最新版</a
+                >
+                <button
+                  class="btn btn-primary btn-lg dropdown-toggle"
+                  type="button"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-label="更多下载方式"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="dropdown-menu">
+                  <a
+                    href="https://github.com/buxicim2026/stream-live-translate/releases/latest"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub 官方发布页<span>按平台下载 OBS 插件包</span></a
+                  >
+                  <a href="https://pan.quark.cn/s/5aa59a439504" target="_blank" rel="noopener">
+                    快速下载<span>夸克网盘 · 国内网络更稳</span>
+                  </a>
+                </div>
+              </div>
               <a class="btn btn-ghost btn-lg" href="contact.html">联系我们</a>
             </div>
           </div>
