@@ -9,7 +9,7 @@
       content="不息传播直播频道：科技生活、发布会直播、工具与插件等栏目，以及 B站 直播间入口与开播预告。"
     />
     <meta name="keywords" content="不息传播,直播频道,发布会直播,B站直播间,24290456,OBS 直播" />
-    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
     <meta property="og:title" content="直播频道 | 不息传播" />
     <meta property="og:description" content="科技生活、发布会直播、工具与插件 —— 开播就在这里。" />
@@ -54,18 +54,19 @@
           </div>
 
           <div class="live-embed reveal" data-delay="1">
+            <!-- /blanc/ 是 B站 的纯净播放器页，允许被 iframe 嵌入；未开播时显示黑屏 -->
             <iframe
-              src="https://live.bilibili.com/blackboard/html5mobileplayer.html?room_id=24290456&danmaku=0&high_quality=1"
+              src="https://live.bilibili.com/blanc/24290456"
               title="不息传播 B站 直播间"
               allowfullscreen
+              allow="autoplay; fullscreen; picture-in-picture"
               frameborder="0"
               scrolling="no"
-              loading="lazy"
             ></iframe>
           </div>
 
           <p class="text-sm text-muted reveal" style="margin-top: 0.9rem">
-            播放器无法显示时，直接点上面的按钮到 B站 直播间观看。
+            未开播时画面是黑的，开播后自动就是实时画面。播放器加载不出来时，点上面的按钮到 B站 直播间观看。
           </p>
         </div>
       </section>

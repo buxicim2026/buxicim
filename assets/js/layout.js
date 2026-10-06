@@ -74,9 +74,24 @@ function bindNavToggle() {
 function bindDropdowns() {
   document.querySelectorAll('[data-dropdown]').forEach((dd) => {
     const toggle = dd.querySelector('.dropdown-toggle');
+    const menu = dd.querySelector('.dropdown-menu');
+
+    // 菜单若会溢出视口右侧，就改为靠右对齐（否则会被 body 的 overflow-x 裁掉）
+    const reposition = () => {
+      if (!menu) return;
+      menu.style.left = '0';
+      menu.style.right = 'auto';
+      const rect = menu.getBoundingClientRect();
+      if (rect.right > window.innerWidth - 12 || rect.left < 12) {
+        menu.style.left = 'auto';
+        menu.style.right = '0';
+      }
+    };
+
     const setOpen = (open) => {
       dd.classList.toggle('is-open', open);
       toggle?.setAttribute('aria-expanded', String(open));
+      if (open) reposition();
     };
 
     toggle?.addEventListener('click', (e) => {
