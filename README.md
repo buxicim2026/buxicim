@@ -73,6 +73,7 @@ VS Code 用户也可以用 Live Server 插件。
 | `scripts/bili-videos.ps1` | 合并「浏览器导出的 BV 列表」+ 合集数据，用 view 接口补标题，输出全量清单 | 不需要 |
 | `scripts/fetch-bili-media.ps1` | 下载 UP 头像与节目封面到 `assets/img/`，素材本地化 | 不需要 |
 | `scripts/cookie-to-netscape.ps1` | 把浏览器 DevTools 复制的 Cookie 头转成 `cookies.txt`（备用路线才需要） | 需要 |
+| `scripts/verify-dropdown.ps1` | 用 Edge 无头模式 + CDP 模拟鼠标，验证下拉菜单交互是否正常（改完交互后可跑一次回归） | 不需要 |
 
 **为什么不能直接抓投稿列表**：`x/space/arc/search` 对非登录请求返回 `412` 风控；而新版
 Edge / Chrome 的 cookie 用 App-Bound 加密，`yt-dlp --cookies-from-browser` 会报
