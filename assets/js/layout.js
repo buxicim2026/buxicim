@@ -99,23 +99,10 @@ function bindDropdowns() {
       setOpen(!dd.classList.contains('is-open'));
     });
 
-    // 关闭带一点延迟：鼠标从按钮移向菜单时不会被中途“抖”掉
-    let hideTimer = null;
-    const cancelHide = () => {
-      if (hideTimer) {
-        clearTimeout(hideTimer);
-        hideTimer = null;
-      }
-    };
-
-    dd.addEventListener('mouseenter', () => {
-      cancelHide();
-      setOpen(true);
-    });
-    dd.addEventListener('mouseleave', () => {
-      cancelHide();
-      hideTimer = setTimeout(() => setOpen(false), 240);
-    });
+    // 注意：这里刻意不做 mouseenter / mouseleave 的开关控制。
+    // 悬停展开交给 CSS 的 :hover（由浏览器原生判定，鼠标在菜单内部时永远算作
+    // 仍在按钮上，不会因为移动路径而被中途关掉）；
+    // JS 只负责「点击箭头锁定展开 / 点击外部或 Esc 收起」。
     dd.addEventListener('focusout', (e) => {
       if (!dd.contains(e.relatedTarget)) setOpen(false);
     });

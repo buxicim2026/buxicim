@@ -723,9 +723,9 @@
 
 .dropdown-menu {
   position: absolute;
-  /* 顶部只留 2px 缝隙，其余用内边距撑开高度：
-     这样鼠标从按钮移向菜单的途中始终落在菜单盒子内，菜单不会被“抖”掉 */
-  top: calc(100% + 2px);
+  /* 紧贴按钮底边（0 间隙），视觉上的间距用内边距撑出来：
+     鼠标从按钮移向菜单时全程落在菜单盒子内部，不会触发 mouseleave */
+  top: 100%;
   left: 0;
   right: auto;
   z-index: 200;
@@ -744,7 +744,12 @@
   transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0.22s;
 }
 
+/* 三种方式都能保持菜单可见：
+   :hover  —— 鼠标在按钮或菜单上（CSS 原生判定，最稳，不受 JS 时序影响）
+   .is-open —— JS 点击箭头后锁定展开
+   :focus-within —— 键盘 Tab 聚焦时可操作 */
 .dropdown.is-open .dropdown-menu,
+.dropdown:hover .dropdown-menu,
 .dropdown:focus-within .dropdown-menu {
   opacity: 1;
   visibility: visible;
