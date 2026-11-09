@@ -31,7 +31,7 @@
           <h1 class="reveal" data-delay="1">开播就在这儿</h1>
           <p class="reveal" data-delay="2">
             有意思的发布会我们都会播，边看边聊；平时也会直播聊聊科技生活里的新鲜事。
-            下面是 B站 直播间，没开播时显示的是回放或休息画面。
+            下面是 B站 直播间，开播后这里会自动播放实时画面。
           </p>
         </div>
       </section>
@@ -54,19 +54,24 @@
           </div>
 
           <div class="live-embed reveal" data-delay="1">
-            <!-- /blanc/ 是 B站 的纯净播放器页，允许被 iframe 嵌入；未开播时显示黑屏 -->
+            <!--
+              B站官方「活动播放器」：面向第三方站点 iframe 嵌入的直播播放器。
+              普通直播间页 live.bilibili.com/24290456 带 X-Frame-Options: SAMEORIGIN，无法嵌入；
+              /blanc/ 页会把整个直播间页塞进小框，布局错乱，均不可用。
+              cid 为房间号；recommend=0 关播时不展示其他主播推荐；entrance=1 保留跳转入口。
+            -->
             <iframe
-              src="https://live.bilibili.com/blanc/24290456"
+              src="https://www.bilibili.com/blackboard/live/live-activity-player.html?cid=24290456&danmaku=0&logo=0&recommend=0&entrance=1"
               title="不息传播 B站 直播间"
               allowfullscreen
-              allow="autoplay; fullscreen; picture-in-picture"
+              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
               frameborder="0"
               scrolling="no"
             ></iframe>
           </div>
 
           <p class="text-sm text-muted reveal" style="margin-top: 0.9rem">
-            未开播时画面是黑的，开播后自动就是实时画面。播放器加载不出来时，点上面的按钮到 B站 直播间观看。
+            未开播时播放器会显示「主播已关播」，开播后自动变成实时画面，无需刷新。画面加载不出来时，点上面的按钮到 B站 直播间观看。
           </p>
         </div>
       </section>
